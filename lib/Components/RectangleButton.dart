@@ -10,7 +10,7 @@ class RectangleButton extends StatelessWidget {
     Key key,
     this.text,
     this.onTap,
-    this.color = null,
+    this.color,
     this.textColor = Colors.white,
     this.prefixIcon,
     this.childWidget,

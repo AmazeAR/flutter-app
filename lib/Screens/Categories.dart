@@ -2,9 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/WideRectangleButton.dart';
+import 'package:flutter_amaze_ar/Components/appBarWithProfileIcon.dart';
 import 'package:flutter_amaze_ar/Components/background.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/Sizes.dart';
+import 'package:flutter_amaze_ar/Screens/Appliances.dart';
 
 class Categories extends StatefulWidget {
   Categories({
@@ -20,36 +22,7 @@ class _MyHomePageState extends State<Categories> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            CircleAvatar(
-                radius: 20,
-                backgroundImage: NetworkImage(
-                  'https://source.unsplash.com/50x50/?portrait',
-                )),
-            SizedBox(width: size.width * 0.05),
-            Text(
-              "AmazeAR",
-              style: TextStyle(
-                  // fontSize: h2,
-                  color: primaryColor,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(width: size.width * 0.25),
-            Icon(
-              Icons.message,
-              color: primaryColor,
-            ),
-            SizedBox(width: size.width * 0.02),
-            Icon(
-              Icons.shopping_cart,
-              color: primaryColor,
-            )
-          ],
-        ),
-      ),
+      appBar: appBarWithProfileIcon(size),
 
       body: Background(
         child: SingleChildScrollView(
@@ -72,7 +45,7 @@ class _MyHomePageState extends State<Categories> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return Categories();
+                        return Appliances();
                       },
                     ),
                   );

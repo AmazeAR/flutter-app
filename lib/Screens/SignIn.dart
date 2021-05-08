@@ -5,9 +5,9 @@ import 'package:flutter_amaze_ar/Components/background.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/Sizes.dart';
 import 'package:flutter_amaze_ar/Screens/Categories.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 
-GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['profile', 'email']);
+// GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['profile', 'email']);
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({
@@ -19,7 +19,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  GoogleSignInAccount _currentUSer;
+  // GoogleSignInAccount _currentUSer;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
