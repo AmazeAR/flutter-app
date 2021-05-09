@@ -22,7 +22,10 @@ class _MyHomePageState extends State<Categories> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: appBarWithProfileIcon(size),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100),
+        child: AppBarWithProfileIcon(),
+      ),
 
       body: Background(
         child: SingleChildScrollView(

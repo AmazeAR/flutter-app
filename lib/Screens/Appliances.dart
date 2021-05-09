@@ -10,9 +10,11 @@ import 'AppliancesDescription.dart';
 class Appliances extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: appBarWithProfileIcon(size),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(100),
+          child: AppBarWithProfileIcon(),
+        ),
         body: Background(
             child: SingleChildScrollView(
                 child: Column(
