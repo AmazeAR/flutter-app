@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 
+import 'SmallRoundedButton.dart';
+
 //Rounded button is created using this
 class ItemCard extends StatelessWidget {
   final void Function() onClick;
@@ -64,24 +66,28 @@ class ItemCard extends StatelessWidget {
                                       style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black,
-                                          fontSize: 20),
+                                          fontSize: 15),
                                       children: <TextSpan>[
                                         TextSpan(
                                             text: "\n $sellingPrice",
                                             style: const TextStyle(
                                                 color: Colors.black,
-                                                fontSize: 20,
+                                                fontSize: 15,
                                                 fontWeight: FontWeight.bold)),
                                       ],
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
-                                const Spacer(),
-                                FlatButton(
-                                    color: Colors.orange,
+                                // SizedBox(width: size.width * 0.1),
+                                IconButton(
                                     onPressed: null,
-                                    child: Text("Add to cart"))
+                                    icon: Icon(Icons.close_outlined)),
+                                SmallRoundedButton(
+                                  color: primaryColor,
+                                  text: "Add to cart",
+                                ),
+
                                 // const Align(
                                 //   alignment: Alignment.topRight,
                                 // ),
