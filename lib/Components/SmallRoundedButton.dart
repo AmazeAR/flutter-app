@@ -20,7 +20,7 @@ class SmallRoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 4),
+      margin: const EdgeInsets.symmetric(vertical: 2),
       width: size.width * 0.2,
       child: TextButton(
         style: TextButton.styleFrom(

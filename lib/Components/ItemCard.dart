@@ -86,14 +86,14 @@ class ItemCard extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Flexible(
-                                    flex: 1,
+                                    flex: 2,
                                     child: IconButton(
                                         onPressed: null,
                                         icon: Icon(Icons.close_outlined)),
                                   ),
                                   Flexible(
                                     fit: FlexFit.loose,
-                                    flex: 1,
+                                    flex: 3,
                                     child: SmallRoundedButton(
                                       color: primaryColor,
                                       text: "Add to cart",

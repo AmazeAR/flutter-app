@@ -23,7 +23,7 @@ class _MyHomePageState extends State<Categories> {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
+        preferredSize: const Size.fromHeight(50),
         child: AppBarWithProfileIcon(),
       ),
 

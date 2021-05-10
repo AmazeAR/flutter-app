@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Screens/Cart.dart';
+import 'package:flutter_amaze_ar/Screens/Message.dart';
 
 class AppBarWithProfileIcon extends StatelessWidget {
   @override
@@ -24,9 +25,17 @@ class AppBarWithProfileIcon extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           ),
           SizedBox(width: size.width * 0.2),
-          Icon(
-            Icons.message,
-            color: primaryColor,
+          GestureDetector(
+            onTap: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => Message()));
+            },
+            child: Icon(
+              Icons.message,
+              color: primaryColor,
+            ),
           ),
           SizedBox(width: size.width * 0.02),
           IconButton(

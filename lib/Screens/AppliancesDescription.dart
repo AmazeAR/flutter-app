@@ -10,7 +10,7 @@ class AppliancesDescription extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(100),
+          preferredSize: const Size.fromHeight(50),
           child: AppBarWithProfileIcon(),
         ),
         body: SingleChildScrollView(
