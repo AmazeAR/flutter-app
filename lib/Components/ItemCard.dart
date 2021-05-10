@@ -37,62 +37,75 @@ class ItemCard extends StatelessWidget {
                 child: Stack(
                   children: <Widget>[
                     Padding(
-                        padding: const EdgeInsets.only(left: 2, top: 8),
-                        child: Column(
+                        padding: const EdgeInsets.only(
+                          left: 2,
+                        ),
+                        child: Row(
                           children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 2.0, top: 4.0),
-                                  child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      //image widget
-                                      child: InkWell(
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              border: Border.all()),
-                                          height: 70,
-                                          width: 100,
-                                          child: productImage,
-                                        ),
-                                      )),
-                                ),
-                                SizedBox(width: size.width * 0.1),
-                                Align(
-                                  child: RichText(
-                                    text: TextSpan(
-                                      text: productName,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                          fontSize: 15),
-                                      children: <TextSpan>[
-                                        TextSpan(
-                                            text: "\n $sellingPrice",
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                      ],
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 2.0, top: 4.0),
+                              child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  //image widget
+                                  child: InkWell(
+                                    child: Container(
+                                      decoration:
+                                          BoxDecoration(border: Border.all()),
+                                      height: 70,
+                                      width: 100,
+                                      child: productImage,
                                     ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                // SizedBox(width: size.width * 0.1),
-                                IconButton(
-                                    onPressed: null,
-                                    icon: Icon(Icons.close_outlined)),
-                                SmallRoundedButton(
-                                  color: primaryColor,
-                                  text: "Add to cart",
-                                ),
-
-                                // const Align(
-                                //   alignment: Alignment.topRight,
-                                // ),
-                              ],
+                                  )),
                             ),
+                            SizedBox(width: size.width * 0.1),
+                            Align(
+                              alignment: Alignment.center,
+                              child: RichText(
+                                text: TextSpan(
+                                  text: productName,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                      fontSize: 15),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                        text: "\n $sellingPrice",
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            SizedBox(width: size.width * 0.1),
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: Column(
+                                children: [
+                                  Flexible(
+                                    flex: 1,
+                                    child: IconButton(
+                                        onPressed: null,
+                                        icon: Icon(Icons.close_outlined)),
+                                  ),
+                                  Flexible(
+                                    fit: FlexFit.loose,
+                                    flex: 1,
+                                    child: SmallRoundedButton(
+                                      color: primaryColor,
+                                      text: "Add to cart",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            // const Align(
+                            //   alignment: Alignment.topRight,
+                            // ),
                           ],
                         ))
                   ],
@@ -105,23 +118,3 @@ class ItemCard extends StatelessWidget {
     );
   }
 }
-
-// class StarDisplay extends StatelessWidget {
-//   final double value;
-//   const StarDisplay({Key? key, this.value = 0})
-//       : assert(value != null),
-//         super(key: key);
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       mainAxisSize: MainAxisSize.min,
-//       children: List.generate(5, (index) {
-//         return Icon(
-//           index < value ? Icons.star : Icons.star_border,
-//           color: kPrimaryColor,
-//           size: 15,
-//         );
-//       }),
-//     );
-//   }
-// }

@@ -25,7 +25,7 @@ class SmallRoundedButton extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: color,
-          padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+          padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(28.0)),
           ),
@@ -39,7 +39,7 @@ class SmallRoundedButton extends StatelessWidget {
               text,
               style: TextStyle(
                 color: textColor,
-                fontSize: 7,
+                fontSize: 12,
               ),
             ),
           ],
