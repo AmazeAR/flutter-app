@@ -1,16 +1,16 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Components/Background.dart';
 import 'package:flutter_amaze_ar/Components/WideRectangleButton.dart';
 import 'package:flutter_amaze_ar/Components/appBarWithProfileIcon.dart';
-import 'package:flutter_amaze_ar/Components/background.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/Sizes.dart';
 import 'package:flutter_amaze_ar/Screens/Appliances.dart';
 
 class Categories extends StatefulWidget {
   Categories({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

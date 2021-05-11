@@ -5,17 +5,17 @@ import 'SmallRoundedButton.dart';
 
 //Rounded button is created using this
 class ItemCard extends StatelessWidget {
-  final void Function() onClick;
+  // final void Function() onClick;
   // ignore: non_constant_identifier_names
   final String productName;
   final int sellingPrice;
   final Image productImage;
   const ItemCard({
-    Key key,
-    this.onClick,
-    this.productName,
-    this.sellingPrice,
-    this.productImage,
+    Key? key,
+    // required this.onClick,
+    required this.productName,
+    required this.sellingPrice,
+    required this.productImage,
   }) : super(key: key);
 
   @override
@@ -28,7 +28,7 @@ class ItemCard extends StatelessWidget {
       child: Card(
         elevation: 5,
         child: GestureDetector(
-          onTap: onClick,
+          // onTap: onClick,
           child: Padding(
             padding: const EdgeInsets.all(1),
             child: Stack(children: <Widget>[
@@ -97,6 +97,7 @@ class ItemCard extends StatelessWidget {
                                     child: SmallRoundedButton(
                                       color: primaryColor,
                                       text: "Add to cart",
+                                      onTap: () {},
                                     ),
                                   ),
                                 ],

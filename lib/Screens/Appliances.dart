@@ -36,14 +36,17 @@ class Appliances extends StatelessWidget {
                 AppliancesCard(
                   price: 150,
                   goodName: "Refrigerator",
+                  returnWidget: AppliancesDescription(),
                 ),
                 AppliancesCard(
                   price: 150,
                   goodName: "Refrigerator",
+                  returnWidget: AppliancesDescription(),
                 ),
                 AppliancesCard(
                   price: 150,
                   goodName: "Refrigerator",
+                  returnWidget: AppliancesDescription(),
                 ),
               ],
             ),

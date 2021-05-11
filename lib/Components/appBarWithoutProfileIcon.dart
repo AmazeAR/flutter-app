@@ -3,7 +3,7 @@ import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Screens/Cart.dart';
 import 'package:flutter_amaze_ar/Screens/Message.dart';
 
-class appBarWithoutProfileIcon extends StatelessWidget {
+class AppBarWithoutProfileIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;

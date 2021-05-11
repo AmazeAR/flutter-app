@@ -4,12 +4,12 @@ import 'package:flutter_amaze_ar/Constants/Sizes.dart';
 
 class AppliancesCard extends StatelessWidget {
   const AppliancesCard({
-    Key key,
+    Key? key,
     this.price,
-    this.goodName,
-    this.returnWidget,
+    required this.returnWidget,
+    required this.goodName,
   }) : super(key: key);
-  final int price;
+  final int? price;
   final String goodName;
   final Widget returnWidget;
   @override

@@ -48,6 +48,7 @@ class AppliancesDescription extends StatelessWidget {
                 RoundedButton(
                   color: primaryColor,
                   text: "View In 3D",
+                  onTap: () {},
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -55,10 +56,12 @@ class AppliancesDescription extends StatelessWidget {
                     RoundedButton(
                       color: primaryColor,
                       text: "Add to your cart",
+                      onTap: () {},
                     ),
                     RoundedButton(
                       color: primaryColor,
                       text: "Add to your group cart",
+                      onTap: () {},
                     ),
                   ],
                 )

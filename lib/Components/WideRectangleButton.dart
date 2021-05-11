@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 class WideRectangleButton extends StatelessWidget {
   final String text;
   final void Function() onTap;
-  final Widget prefixIcon, childWidget;
-  final Color color, textColor;
+  final Widget? prefixIcon, childWidget;
+  final Color? color, textColor;
   const WideRectangleButton({
-    Key key,
-    this.text,
-    this.onTap,
+    Key? key,
+    required this.text,
+    required this.onTap,
     this.color,
     this.textColor = Colors.white,
     this.prefixIcon,

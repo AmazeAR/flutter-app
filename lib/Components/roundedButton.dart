@@ -4,16 +4,18 @@ import 'package:flutter/material.dart';
 class RoundedButton extends StatelessWidget {
   final String text;
   final void Function() onTap;
-  final Widget prefixIcon, childWidget;
-  final Color color, textColor;
+  final Widget? prefixIcon;
+  final Widget? childWidget;
+  final Color? color;
+  final Color? textColor;
   const RoundedButton({
-    Key key,
+    Key? key,
     this.color,
     this.textColor = Colors.white,
     this.prefixIcon,
     this.childWidget,
-    this.text,
-    this.onTap,
+    required this.text,
+    required this.onTap,
   }) : super(key: key);
 
   @override

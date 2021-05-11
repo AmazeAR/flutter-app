@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 //Rounded button is created using this
 class RectangleButton extends StatelessWidget {
   final String text;
-  final void Function() onTap;
-  final Widget prefixIcon, childWidget;
-  final Color color, textColor;
+  final void Function()? onTap;
+  final Widget? prefixIcon, childWidget;
+  final Color? color, textColor;
   const RectangleButton({
-    Key key,
-    this.text,
+    Key? key,
+    required this.text,
     this.onTap,
     this.color,
     this.textColor = Colors.white,

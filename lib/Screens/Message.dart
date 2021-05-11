@@ -1,12 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Components/appBarWithoutProfileIcon.dart';
-import 'package:flutter_amaze_ar/Components/background.dart';
+import 'package:flutter_amaze_ar/Components/AppBarWithoutProfileIcon.dart';
 
 class Message extends StatefulWidget {
   Message({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -16,11 +15,11 @@ class Message extends StatefulWidget {
 class _MyHomePageState extends State<Message> {
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    // final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
-        child: appBarWithoutProfileIcon(),
+        child: AppBarWithoutProfileIcon(),
       ),
 
       body: new Column(
