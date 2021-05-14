@@ -7,10 +7,13 @@ import 'package:flutter_amaze_ar/Components/appBarWithProfileIcon.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/Sizes.dart';
 import 'package:flutter_amaze_ar/Screens/Appliances.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Categories extends StatefulWidget {
+  final GoogleSignInAccount user;
   Categories({
     Key? key,
+    required this.user,
   }) : super(key: key);
 
   @override
@@ -24,7 +27,9 @@ class _MyHomePageState extends State<Categories> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
-        child: AppBarWithProfileIcon(),
+        child: AppBarWithProfileIcon(
+          user: widget.user,
+        ),
       ),
 
       body: Background(
@@ -48,7 +53,9 @@ class _MyHomePageState extends State<Categories> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return Appliances();
+                        return Appliances(
+                          user: widget.user,
+                        );
                       },
                     ),
                   );
@@ -57,72 +64,27 @@ class _MyHomePageState extends State<Categories> {
               WideRectangleButton(
                 text: "Electronics",
                 color: primaryColor,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Categories();
-                      },
-                    ),
-                  );
-                },
+                onTap: () {},
               ),
               WideRectangleButton(
                 text: "Appliances",
                 color: primaryColor,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Categories();
-                      },
-                    ),
-                  );
-                },
+                onTap: () {},
               ),
               WideRectangleButton(
                 text: "Mobile",
                 color: primaryColor,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Categories();
-                      },
-                    ),
-                  );
-                },
+                onTap: () {},
               ),
               WideRectangleButton(
                 text: "Fashion",
                 color: primaryColor,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Categories();
-                      },
-                    ),
-                  );
-                },
+                onTap: () {},
               ),
               WideRectangleButton(
                 text: "Others",
                 color: primaryColor,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Categories();
-                      },
-                    ),
-                  );
-                },
+                onTap: () {},
               ),
             ],
           ),

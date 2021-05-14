@@ -3,15 +3,20 @@ import 'package:flutter_amaze_ar/Components/appBarWithProfileIcon.dart';
 import 'package:flutter_amaze_ar/Components/roundedButton.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/Sizes.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AppliancesDescription extends StatelessWidget {
+  final GoogleSignInAccount user;
+  const AppliancesDescription({required this.user});
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(50),
-          child: AppBarWithProfileIcon(),
+          child: AppBarWithProfileIcon(
+            user: user,
+          ),
         ),
         body: SingleChildScrollView(
           child: SizedBox(

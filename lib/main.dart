@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Screens/Categories.dart';
 import 'package:flutter_amaze_ar/Screens/SignIn.dart';
 
 void main() {
