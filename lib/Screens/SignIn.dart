@@ -13,6 +13,8 @@ import 'dart:convert' show json;
 
 import "package:http/http.dart" as http;
 
+import 'CategoriesFuture.dart';
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({
     Key? key,
@@ -95,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return null;
   }
 
-  Future<void> _handleSignIn() async {
+  Future<void> handleSignIn() async {
     try {
       await _googleSignIn.signIn();
     } catch (error) {
@@ -119,25 +121,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: user != null
             ? Column(
                 children: <Widget>[
-                  // ListTile(
-                  //   leading: GoogleUserCircleAvatar(
-                  //     identity: user,
-                  //   ),
-                  //   title: Text(user.displayName ?? ''),
-                  //   subtitle: Text(user.email),
-                  // ),
-                  // const Text("Signed in successfully."),
                   Expanded(
                       child: Center(
                     child: ElevatedButton(
                       child: const Text('Move to Categories'),
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) => Categories(
-                                      user: user,
-                                    )));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => CategoriesFuture()));
                       },
                     ),
                   )),
@@ -170,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: RectangleButton(
                       text: "SignIn With Google ",
                       color: primaryColor,
-                      onTap: _handleSignIn,
+                      onTap: handleSignIn,
                     ),
                   )
                 ],
