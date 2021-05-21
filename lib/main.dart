@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Screens/SignIn.dart';
+import 'package:flutter_amaze_ar/Screens/Category/Categories.dart';
+import 'package:flutter_amaze_ar/test.dart';
+
+import 'Screens/Products/prodcuts.dart';
+// import 'package:flutter_amaze_ar/test.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: Categories(),
     );
   }
 }
