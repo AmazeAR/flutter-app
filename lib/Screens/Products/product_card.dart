@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Screens/ProductDescription/product_description.dart';
 
 class ProductCard extends StatelessWidget {
   final String id;
@@ -31,7 +32,18 @@ class ProductCard extends StatelessWidget {
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
         onTap: () {
-          print('Card tapped.');
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => ProductDescription(
+                      id: id,
+                      catId: catId,
+                      catName: catName,
+                      proName: proName,
+                      brandName: brandName,
+                      proImage: proImage,
+                      price: price,
+                      is3DModel: is3DModel)));
         },
         child: Column(
           children: [

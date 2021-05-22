@@ -12,7 +12,7 @@ class Products extends StatelessWidget {
         title: Text("Products"),
       ),
       body: Container(
-        color: Colors.blue.shade100,
+        color: Colors.black12,
         child: FutureBuilder(
             future: httpService.getPro(),
             builder:
