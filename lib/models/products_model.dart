@@ -1,4 +1,4 @@
-class Product {
+class ProductModel {
   final String id;
   final String catId;
   final String catName;
@@ -8,7 +8,7 @@ class Product {
   final String price;
   final bool is3DModel;
 
-  Product(
+  ProductModel(
       {required this.id,
       required this.catId,
       required this.catName,
@@ -17,8 +17,8 @@ class Product {
       required this.proImage,
       required this.price,
       required this.is3DModel});
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
       id: json['_id'] as String,
       catId: json['categoryId'] as String,
       catName: json['categoryName'] as String,

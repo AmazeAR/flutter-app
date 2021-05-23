@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Screens/Category/Categories.dart';
+import 'package:flutter_amaze_ar/Screens/Categories.dart';
+import 'package:flutter_amaze_ar/Screens/Personal_Cart.dart';
 import 'package:flutter_amaze_ar/test.dart';
 
-import 'Screens/Products/prodcuts.dart';
+import 'Screens/Prodcuts.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,9 +18,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.blue,
       ),
-      home: Products(),
+      home: Categories(),
     );
   }
 }

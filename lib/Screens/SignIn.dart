@@ -5,7 +5,7 @@ import 'package:flutter_amaze_ar/Components/appBarWithProfileIcon.dart';
 import 'package:flutter_amaze_ar/Components/background.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/Sizes.dart';
-import 'package:flutter_amaze_ar/Screens/Category/Categories.dart';
+import 'package:flutter_amaze_ar/Screens/Categories.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'dart:async';

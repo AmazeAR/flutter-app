@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Screens/Appliances.dart';
-import 'package:flutter_amaze_ar/Screens/Products/prodcuts.dart';
+import 'package:flutter_amaze_ar/Components/appBarWithProfileIcon.dart';
+import 'package:flutter_amaze_ar/Screens/Prodcuts.dart';
 import 'package:flutter_amaze_ar/services/categories_services.dart';
 import 'package:flutter_amaze_ar/models/categories_model.dart';
 
@@ -10,21 +10,22 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Categories"),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: AppBarWithProfileIcon(),
       ),
       body: FutureBuilder(
         future: httpService.getCat(),
-        builder:
-            (BuildContext context, AsyncSnapshot<List<Category>> snapshot) {
+        builder: (BuildContext context,
+            AsyncSnapshot<List<CategoryModel>> snapshot) {
           if (snapshot.hasData) {
-            List<Category> cats = snapshot.data!;
+            List<CategoryModel> cats = snapshot.data!;
             return ListView(
               padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
               children: cats
-                  .map((Category cat) => ListTile(
+                  .map((CategoryModel cat) => ListTile(
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>

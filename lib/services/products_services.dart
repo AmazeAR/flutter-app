@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_amaze_ar/models/products_model.dart';
 
 class HttpService {
-  Future<List<Product>> getPro() async {
+  Future<List<ProductModel>> getPro() async {
     http.Response res = await http
         .get(Uri.https('amazar-v1.herokuapp.com', 'products/Electronics'));
     print(res.statusCode);
@@ -11,8 +11,8 @@ class HttpService {
       print("yes");
       print(res.body);
       List<dynamic> body =  json.decode(res.body)['data'];
-      List<Product> pro =
-          body.map((dynamic item) => Product.fromJson(item)).toList();
+      List<ProductModel> pro =
+          body.map((dynamic item) => ProductModel.fromJson(item)).toList();
       print(pro);
       return pro;
     }

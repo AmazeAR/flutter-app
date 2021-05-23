@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Screens/Products/product_card.dart';
+import 'package:flutter_amaze_ar/Components/appBarWithProfileIcon.dart';
+import 'package:flutter_amaze_ar/Components/Product_Card.dart';
 import 'package:flutter_amaze_ar/models/products_model.dart';
 import 'package:flutter_amaze_ar/services/products_services.dart';
 
@@ -8,25 +9,24 @@ class Products extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Products"),
-      ),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80), child: AppBarWithProfileIcon()),
       body: Container(
         color: Colors.black12,
         child: FutureBuilder(
             future: httpService.getPro(),
-            builder:
-                (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+            builder: (BuildContext context,
+                AsyncSnapshot<List<ProductModel>> snapshot) {
               if (snapshot.hasData) {
-                List<Product> pros = snapshot.data!;
+                List<ProductModel> pros = snapshot.data!;
                 return GridView.count(
                   padding: EdgeInsets.all(6),
                   crossAxisCount: 2,
                   children: pros
-                      .map((Product pro) => ProductCard(
+                      .map((ProductModel pro) => ProductCard(
                           id: pro.id,
                           catId: pro.catId,
-                          catName: pro.catName,
+                          catName: pro.catName, 
                           proName: pro.proName,
                           brandName: pro.brandName,
                           proImage: pro.proImage,
