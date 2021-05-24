@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Screens/SignIn.dart';
+import 'package:flutter_amaze_ar/Screens/Categories.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -14,9 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: Categories(),
     );
   }
 }
