@@ -1,42 +1,33 @@
 {
   "project_info": {
-    "project_number": "540703444917",
-    "firebase_url": "https://appamazear-default-rtdb.firebaseio.com",
-    "project_id": "appamazear",
-    "storage_bucket": "appamazear.appspot.com"
+    "project_number": "539636563885",
+    "project_id": "amazar-3ac5d",
+    "storage_bucket": "amazar-3ac5d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:540703444917:android:9e5dad0e282c2e7cf953fc",
+        "mobilesdk_app_id": "1:539636563885:android:49c4ffaafaac4a8a6eab24",
         "android_client_info": {
           "package_name": "com.sagar.appamazear"
         }
       },
       "oauth_client": [
         {
-          "client_id": "540703444917-seh5s71v03k3qcqtf491l51e8gm0jplg.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.sagar.appamazear",
-            "certificate_hash": "4e8d7f998ea791b44eb76079188dbd9e13d5f1f4"
-          }
-        },
-        {
-          "client_id": "540703444917-ce4vrramu501r96kuhrmigkjg0eln6cf.apps.googleusercontent.com",
+          "client_id": "539636563885-0fuflgjgppu11mk5bsjo545sa118rfvo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCIMyYNAdngUKoPQ9nEZo0iFYm_a-2HWmc"
+          "current_key": "AIzaSyCXGl6aAFX2UTiROdoBCu3LwqoVGGAWhcw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "540703444917-ce4vrramu501r96kuhrmigkjg0eln6cf.apps.googleusercontent.com",
+              "client_id": "539636563885-0fuflgjgppu11mk5bsjo545sa118rfvo.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
