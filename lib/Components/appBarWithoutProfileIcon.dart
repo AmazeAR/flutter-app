@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
-import 'package:flutter_amaze_ar/Screens/Cart.dart';
+import 'package:flutter_amaze_ar/Screens/Categories.dart';
 import 'package:flutter_amaze_ar/Screens/Message.dart';
 
 class AppBarWithoutProfileIcon extends StatelessWidget {
@@ -32,7 +32,7 @@ class AppBarWithoutProfileIcon extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => ProductList()));
+                      builder: (BuildContext context) => Categories()));
             },
             icon: Icon(
               Icons.shopping_cart,
@@ -56,7 +56,7 @@ class AppBarWithoutProfileIcon extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => ProductList()));
+                      builder: (BuildContext context) => Categories()));
             },
             icon: Icon(
               Icons.shopping_cart,

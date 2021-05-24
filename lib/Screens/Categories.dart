@@ -1,98 +1,66 @@
-import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Components/Background.dart';
 import 'package:flutter_amaze_ar/Components/appBarWithProfileIcon.dart';
-import 'package:flutter_amaze_ar/Constants/Colors.dart';
-import 'package:flutter_amaze_ar/Constants/Sizes.dart';
-import 'package:flutter_amaze_ar/Screens/Appliances.dart';
-import 'package:flutter_amaze_ar/Services/CategoriesAPI.dart';
-import 'package:flutter_amaze_ar/components/WideRectangleButton.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'dart:async';
-import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_amaze_ar/Screens/Prodcuts.dart';
+import 'package:flutter_amaze_ar/services/categories_services.dart';
+import 'package:flutter_amaze_ar/models/categories_model.dart';
 
-class Categories extends StatefulWidget {
-  final GoogleSignInAccount user;
-  Categories({
-    Key? key,
-    required this.user,
-  }) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<Categories> {
-  // List<CategoriesModel> categorieslist = [
-  //   CategoriesModel(
-  //     id: 4,
-  //     categoryName: "Sagar",
-  //   ),
-  //   CategoriesModel(
-  //     id: 2,
-  //     categoryName: "Manish",
-  //   ),
-  // ];
-
-  /////////////////////////////////////////
-  Future<void> getdata() async {
-    var res =
-        await http.get(Uri.parse('https://amazar-v1.herokuapp.com/categories'));
-    print(res.body);
-  }
-
-////////////////////////////////////////
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   CategoriesAPI.getCategories().then((value) => setState(() {
-  //         categorieslist = value;
-  //       }));
-  // }
-
+class Categories extends StatelessWidget {
+  final HttpServiceCategories httpService = HttpServiceCategories();
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
-        child: AppBarWithProfileIcon(
-          user: widget.user,
-        ),
+        preferredSize: Size.fromHeight(70),
+        child: AppBarWithProfileIcon(),
       ),
-
-      body: Background(
-        child: SingleChildScrollView(
-          physics: const ScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Categories",
-                style: TextStyle(
-                    fontSize: h2,
-                    color: primaryColor,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: size.height * 0.02),
-              // ListView.builder(
-              //     physics: const NeverScrollableScrollPhysics(),
-              //     shrinkWrap: true,
-              //     itemCount: categorieslist.length,
-              //     itemBuilder: (context, index) {
-              //       // return Text(categorieslist[index].categoryName);
-              //       return WideRectangleButton(
-              //         text: categorieslist[index].categoryName,
-              //         color: primaryColor,
-              //         onTap: getdata,
-              //       );
-              //     }),
-            ],
-          ),
-        ),
+      body: FutureBuilder(
+        future: httpService.getCat(),
+        builder: (BuildContext context,
+            AsyncSnapshot<List<CategoryModel>> snapshot) {
+          if (snapshot.hasData) {
+            List<CategoryModel> cats = snapshot.data!;
+            return ListView(
+              padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
+              children: cats
+                  .map((CategoryModel cat) => ListTile(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      Products()));
+                        },
+                        title: Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(cat.url),
+                              colorFilter: ColorFilter.mode(
+                                  Colors.green.withOpacity(0.6),
+                                  BlendMode.dstATop),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Center(
+                                child: Text(
+                              cat.name,
+                              style:
+                                  TextStyle(fontSize: 30, color: Colors.black),
+                            )),
+                          ),
+                        ),
+                      ))
+                  .toList(),
+            );
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

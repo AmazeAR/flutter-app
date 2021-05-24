@@ -13,7 +13,6 @@ import 'dart:convert' show json;
 
 import "package:http/http.dart" as http;
 
-import 'CategoriesFuture.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({
@@ -118,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       body: Background(
-        child: user != null
+        child: user == null
             ? Column(
                 children: <Widget>[
                   Expanded(
@@ -127,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Text('Move to Categories'),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => CategoriesFuture()));
+                            builder: (context) => Categories()));
                       },
                     ),
                   )),
