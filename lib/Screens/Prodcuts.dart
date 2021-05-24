@@ -5,7 +5,7 @@ import 'package:flutter_amaze_ar/models/products_model.dart';
 import 'package:flutter_amaze_ar/services/products_services.dart';
 
 class Products extends StatelessWidget {
-  final HttpService httpService = HttpService();
+  final HttpServiceProducts httpService = HttpServiceProducts();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -5,8 +5,8 @@ import 'package:flutter_amaze_ar/models/products_model.dart';
 import 'package:flutter_amaze_ar/services/personal_cart_services.dart';
 
 class PersonalCart extends StatelessWidget {
-  final HttpService _httpService =
-      HttpService(userid: '609cfe4632e2cc480c27106d');
+  final HttpServicePersonalCart _httpService =
+      HttpServicePersonalCart(userid: '609cfe4632e2cc480c27106d');
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_amaze_ar/models/products_model.dart';
 
-class HttpService {
+class HttpServiceProducts {
   Future<List<ProductModel>> getPro() async {
     http.Response res = await http
         .get(Uri.https('amazar-v1.herokuapp.com', 'products/Electronics'));

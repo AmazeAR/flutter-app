@@ -6,7 +6,7 @@ import 'package:flutter_amaze_ar/services/categories_services.dart';
 import 'package:flutter_amaze_ar/models/categories_model.dart';
 
 class Categories extends StatelessWidget {
-  final HttpService httpService = HttpService();
+  final HttpServiceCategories httpService = HttpServiceCategories();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
