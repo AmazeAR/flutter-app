@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Components/AppBarWithoutProfileIcon.dart';
+import 'package:flutter_amaze_ar/Components/appbar_with_profileicon.dart';
 
 class Message extends StatefulWidget {
   Message({
