@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Screens/signin_page.dart';
+import 'Screens/home_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -13,10 +17,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'AmazAR',
       theme: ThemeData.light().copyWith(),
-      home: SignInPage(),
+      home: HomePage(),
     );
   }
 }
  
 // colors 005662  5669EC  2c50e2 #0093a8
-                    
