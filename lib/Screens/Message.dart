@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/AppBarWithoutProfileIcon.dart';
 
