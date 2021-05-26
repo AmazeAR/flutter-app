@@ -10,12 +10,14 @@ class UserModel {
       required this.emailId,
       this.profileURL = ''});
 
-  Map<String, dynamic> toJson() => {
-        'userId': userId,
-        'fullName': fullName,
-        'emailId': emailId,
-        'profileImage': profileURL
-      };
+  Map<String, dynamic> toJson() {
+    return ({
+      'userId': userId,
+      'fullName': fullName,
+      'emailId': emailId,
+      'profileImage': profileURL
+    });
+  }
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(

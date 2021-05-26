@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Components/appBarWithProfileIcon.dart';
+import 'package:flutter_amaze_ar/Components/appbar_with_profile.dart';
 import 'package:flutter_amaze_ar/Components/Product_Card.dart';
 import 'package:flutter_amaze_ar/models/products_model.dart';
 import 'package:flutter_amaze_ar/services/products_services.dart';

@@ -3,12 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:flutter_amaze_ar/services/user_services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:localstorage/localstorage.dart';
 
 class GoogleSignInProvider extends ChangeNotifier {
   GoogleSignInProvider();
 
   final GoogleSignIn googleSignIn = GoogleSignIn();
   bool _isSigningIn = false;
+  final LocalStorage storage = LocalStorage('amaz_ar');
 
   bool getIsSigningIn() {
     return _isSigningIn;
@@ -46,6 +48,10 @@ class GoogleSignInProvider extends ChangeNotifier {
           emailId: userCredential.user!.email!,
           profileURL: userCredential.user!.photoURL!);
 
+      storage.setItem("user", userModel.toJson());
+
+      print(storage.getItem("user"));
+
       HttpUserServices httpUserServices = HttpUserServices();
       httpUserServices.postUser(userModel);
 
@@ -55,6 +61,7 @@ class GoogleSignInProvider extends ChangeNotifier {
 
   void logout() async {
     await googleSignIn.disconnect();
+    await storage.clear();
     FirebaseAuth.instance.signOut();
   }
 }
