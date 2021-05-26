@@ -2,18 +2,18 @@ import 'dart:convert';
 import 'package:flutter_amaze_ar/models/product_model.dart';
 import 'package:http/http.dart' as http;
 
-class HttpPersonalCartServices {
-  final String userId;
+class HttpGroupCartServices {
+  final String groupId;
 
-  HttpPersonalCartServices({required this.userId});
+  HttpGroupCartServices({required this.groupId});
 
-  Future<List<ProductModel>> getPersoanlCart() async {
+  Future<List<ProductModel>> getGroupCart() async {
     final res = await http
-        .get(Uri.https('amazar-v1.herokuapp.com', '/personalCart/$userId'));
+        .get(Uri.https('amazar-v1.herokuapp.com', '/personalCart/$groupId'));
 
     // print(res.statusCode);
     if (res.statusCode == 200) {
-      print("personal cart successfuly fetched!");
+      print("group cart successfuly fetched!");
 
       var body = json.decode(res.body);
       List<dynamic> cartJson = body['data'];
@@ -26,7 +26,7 @@ class HttpPersonalCartServices {
 
       return cart;
     } else {
-      throw Exception("Failed to fetch personalCart from personalCart/user_id");
+      throw Exception("Failed to fetch GroupCart from groupCart/group_id");
     }
   }
 }

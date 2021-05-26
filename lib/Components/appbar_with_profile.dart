@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Screens/Message.dart';
-import 'package:flutter_amaze_ar/Screens/Personal_Cart.dart';
+import 'package:flutter_amaze_ar/Screens/personalCart_page.dart';
 import 'package:localstorage/localstorage.dart';
 
 class AppBarWithProfileIcon extends StatelessWidget {

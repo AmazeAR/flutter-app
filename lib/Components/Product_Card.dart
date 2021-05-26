@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Screens/product_des_page.dart';
+import 'package:flutter_amaze_ar/Screens/productDes_page.dart';
 
 class ProductCard extends StatelessWidget {
   final String productId;
