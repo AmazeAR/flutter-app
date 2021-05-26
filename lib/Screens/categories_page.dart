@@ -3,10 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar_with_profile.dart';
 import 'package:flutter_amaze_ar/Screens/Prodcuts.dart';
 import 'package:flutter_amaze_ar/services/categories_services.dart';
-import 'package:flutter_amaze_ar/models/categories_model.dart';
+import 'package:flutter_amaze_ar/models/category_model.dart';
 
-class CategoriesPage extends StatelessWidget {
-  final HttpServiceCategories httpService = HttpServiceCategories();
+class CategoriesPage extends StatefulWidget {
+  @override
+  _CategoriesPageState createState() => _CategoriesPageState();
+}
+
+class _CategoriesPageState extends State<CategoriesPage> {
+  final HttpCategoriesServices categoriesServices = HttpCategoriesServices();
+  late Future<List<CategoryModel>> categoriesList;
+
+  @override
+  void initState() {
+    super.initState();
+    categoriesList = categoriesServices.getCategories();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +28,15 @@ class CategoriesPage extends StatelessWidget {
         child: AppBarWithProfileIcon(),
       ),
       body: FutureBuilder(
-        future: httpService.getCat(),
+        future: categoriesList,
         builder: (BuildContext context,
             AsyncSnapshot<List<CategoryModel>> snapshot) {
           if (snapshot.hasData) {
-            List<CategoryModel> cats = snapshot.data!;
+            List<CategoryModel> categories = snapshot.data!;
             return ListView(
-              padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
-              children: cats
-                  .map((CategoryModel cat) => ListTile(
+              padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
+              children: categories
+                  .map((CategoryModel category) => ListTile(
                         onTap: () {
                           Navigator.push(
                               context,
@@ -36,7 +48,7 @@ class CategoriesPage extends StatelessWidget {
                           height: 100,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: NetworkImage(cat.url),
+                              image: NetworkImage(category.categoryURL),
                               colorFilter: ColorFilter.mode(
                                   Colors.green.withOpacity(0.6),
                                   BlendMode.dstATop),
@@ -47,7 +59,7 @@ class CategoriesPage extends StatelessWidget {
                             padding: const EdgeInsets.all(18.0),
                             child: Center(
                                 child: Text(
-                              cat.name,
+                              category.categoryName,
                               style:
                                   TextStyle(fontSize: 30, color: Colors.black),
                             )),
@@ -55,6 +67,10 @@ class CategoriesPage extends StatelessWidget {
                         ),
                       ))
                   .toList(),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text('${snapshot.error}'),
             );
           }
           return Center(
