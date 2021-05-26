@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/Personal_Cart_Card.dart';
 import 'package:flutter_amaze_ar/Components/appbar_with_profile.dart';
-import 'package:flutter_amaze_ar/models/products_model.dart';
+import 'package:flutter_amaze_ar/models/product_model.dart';
 import 'package:flutter_amaze_ar/services/personal_cart_services.dart';
 
 class PersonalCart extends StatelessWidget {
@@ -23,12 +23,12 @@ class PersonalCart extends StatelessWidget {
             return ListView(
               children: personalCartPro
                   .map((ProductModel item) => PersonalCartCard(
-                      id: item.id,
-                      catId: item.catId,
-                      catName: item.catName,
-                      proName: item.proName,
+                      id: item.productId,
+                      catId: item.categoryId,
+                      catName: item.categoryName,
+                      proName: item.productName,
                       brandName: item.brandName,
-                      proImage: item.proImage,
+                      proImage: item.productURL,
                       price: item.price,
                       is3DModel: item.is3DModel))
                   .toList(),

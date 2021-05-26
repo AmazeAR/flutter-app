@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar_with_profile.dart';
-import 'package:flutter_amaze_ar/Screens/Prodcuts.dart';
+import 'package:flutter_amaze_ar/Screens/products_page.dart';
 import 'package:flutter_amaze_ar/services/categories_services.dart';
 import 'package:flutter_amaze_ar/models/category_model.dart';
 
@@ -39,10 +39,12 @@ class _CategoriesPageState extends State<CategoriesPage> {
                   .map((CategoryModel category) => ListTile(
                         onTap: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      Products()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  Products(categoryName: category.categoryName),
+                            ),
+                          );
                         },
                         title: Container(
                           height: 100,

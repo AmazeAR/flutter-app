@@ -12,7 +12,7 @@ class HttpCategoriesServices {
       var body = json.decode(res.body);
       List<dynamic> categoriesListJson = body['data'];
       List<CategoryModel> categoriesList = categoriesListJson
-          .map((dynamic category) => CategoryModel.fromJson(category))
+          .map((dynamic categoryJson) => CategoryModel.fromJson(categoryJson))
           .toList();
       return categoriesList;
     } else {

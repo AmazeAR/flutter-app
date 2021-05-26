@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter_amaze_ar/models/products_model.dart';
+import 'package:flutter_amaze_ar/models/product_model.dart';
 import 'package:http/http.dart' as http;
 
 class HttpServicePersonalCart {
