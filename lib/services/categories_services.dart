@@ -7,11 +7,10 @@ class HttpServiceCategories {
     http.Response res =
         await http.get(Uri.https('amazar-v1.herokuapp.com', 'categories'));
     if (res.statusCode == 200) {
-      print("yes");
+      print("categories successfuly fetched!");
       List<dynamic> body = json.decode(res.body);
       List<CategoryModel> cat =
           body.map((dynamic item) => CategoryModel.fromJson(item)).toList();
-      print(cat);
       return cat;
     }
     throw "error";

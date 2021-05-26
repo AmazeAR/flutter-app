@@ -1,55 +1,82 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Screens/Message.dart';
 import 'package:flutter_amaze_ar/Screens/Personal_Cart.dart';
-// import 'package:google_sign_in/google_sign_in.dart';
-// import 'package:google_sign_in/widgets.dart';
 
 class AppBarWithProfileIcon extends StatelessWidget {
-  // final GoogleSignInAccount user;
-
-  // const AppBarWithProfileIcon({required this.user});
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return AppBar(
-      backgroundColor: Colors.white,
-      title: Row(
-        children: [
-          // GoogleUserCircleAvatar(
-          // identity: user,
-          // ),
-          SizedBox(width: size.width * 0.05),
-          Text(
-            "AmazeAR",
-            style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(width: size.width * 0.2),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => Message()));
-            },
-            child: Icon(
-              Icons.message,
-              color: primaryColor,
+      backgroundColor: Colors.lightBlueAccent,
+      elevation: 6.0,
+      title: Padding(
+        padding: const EdgeInsets.only(top: 15.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            Expanded(
+              flex: 1,
+              child: GestureDetector(
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      'https://lh3.googleusercontent.com/a-/AOh14Gi2_aWR5ZzS4EX03Jk2HyFrEZEOig7Nh_GxxQLTlw=s96-c'),
+                ),
+                onTap: () {
+                  // user profile btn get pressed
+                  final user = FirebaseAuth.instance.currentUser;
+                  print(user);
+                },
+              ),
             ),
-          ),
-          SizedBox(width: size.width * 0.02),
-          IconButton(
-              onPressed: () {
-                Navigator.push(
+            Spacer(),
+            Expanded(
+              flex: 3,
+              child: Text(
+                "AmazAR",
+                style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                  textBaseline: TextBaseline.alphabetic,
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => PersonalCart()));
-              },
-              icon: Icon(
-                Icons.shopping_cart,
-                color: primaryColor,
-              )),
-        ],
+                        builder: (BuildContext context) => Message()),
+                  );
+                },
+                child: Icon(
+                  Icons.message,
+                  color: Colors.white,
+                  size: 30.0,
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => PersonalCart()));
+                },
+                icon: Icon(
+                  Icons.shopping_cart,
+                  color: Colors.white,
+                  size: 30.0,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
