@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Components/descrption_widget.dart';
 
 class ProductDescriptionPage extends StatelessWidget {
   final String productId;
@@ -83,7 +84,8 @@ class ProductDescriptionPage extends StatelessWidget {
                   ),
                   SizedBox(
                     height: size.height * 0.05,
-                  )
+                  ),
+                  DescriptionWidget(productId: productId),
                 ],
               ),
             ),
