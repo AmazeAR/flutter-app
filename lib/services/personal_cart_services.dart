@@ -12,10 +12,10 @@ class HttpServicePersonalCart {
         .get(Uri.https('amazar-v1.herokuapp.com', '/personalCart/$userid'));
     print(res.statusCode);
     if (res.statusCode == 200) {
+      print("personal cart successfuly fetched!");
       List<dynamic> body = json.decode(res.body)['data'];
       List<ProductModel> der =
           body.map((dynamic item) => ProductModel.fromJson(item)).toList();
-      print(der);
       return der;
     }
     throw 'res';
