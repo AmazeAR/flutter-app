@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-class ProductDescription extends StatelessWidget {
-  final String id;
-  final String catId;
-  final String catName;
-  final String proName;
+class ProductDescriptionPage extends StatelessWidget {
+  final String productId;
+  final String categoryId;
+  final String categoryName;
+  final String productName;
   final String brandName;
-  final String proImage;
+  final String productURL;
   final String price;
   final bool is3DModel;
 
-  const ProductDescription(
+  const ProductDescriptionPage(
       {Key? key,
-      required this.id,
-      required this.catId,
-      required this.catName,
-      required this.proName,
+      required this.productId,
+      required this.categoryId,
+      required this.categoryName,
+      required this.productName,
       required this.brandName,
-      required this.proImage,
+      required this.productURL,
       required this.price,
       required this.is3DModel})
       : super(key: key);
@@ -27,7 +27,7 @@ class ProductDescription extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Products dis"),
+        title: Text("Products description"),
       ),
       body: Container(
         child: Column(
@@ -39,7 +39,7 @@ class ProductDescription extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Image.network(
-                    proImage,
+                    productURL,
                     height: size.height * 0.4,
                     width: size.width * 0.9,
                   ),
@@ -52,7 +52,7 @@ class ProductDescription extends StatelessWidget {
                       SizedBox(
                         width: 250.0,
                         child: Text(
-                          proName,
+                          productName,
                           maxLines: 1,
                           overflow: TextOverflow.visible,
                           softWrap: false,

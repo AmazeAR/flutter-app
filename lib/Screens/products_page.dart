@@ -4,16 +4,16 @@ import 'package:flutter_amaze_ar/Components/Product_Card.dart';
 import 'package:flutter_amaze_ar/models/product_model.dart';
 import 'package:flutter_amaze_ar/services/products_services.dart';
 
-class Products extends StatefulWidget {
+class ProductsPage extends StatefulWidget {
   final String categoryName;
 
-  const Products({Key? key, required this.categoryName}) : super(key: key);
+  const ProductsPage({Key? key, required this.categoryName}) : super(key: key);
 
   @override
-  _ProductsState createState() => _ProductsState();
+  _ProductsPageState createState() => _ProductsPageState();
 }
 
-class _ProductsState extends State<Products> {
+class _ProductsPageState extends State<ProductsPage> {
   final HttpProductsServices productsServices = HttpProductsServices();
   late Future<List<ProductModel>> productsList;
 
@@ -42,12 +42,12 @@ class _ProductsState extends State<Products> {
                   crossAxisCount: 2,
                   children: products
                       .map((ProductModel product) => ProductCard(
-                          id: product.productId,
-                          catId: product.categoryId,
-                          catName: product.categoryName,
-                          proName: product.productName,
+                          productId: product.productId,
+                          categoryId: product.categoryId,
+                          categoryName: product.categoryName,
+                          productName: product.productName,
                           brandName: product.brandName,
-                          proImage: product.productURL,
+                          productURL: product.productURL,
                           price: product.price,
                           is3DModel: product.is3DModel))
                       .toList(),

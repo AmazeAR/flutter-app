@@ -42,7 +42,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  Products(categoryName: category.categoryName),
+                                  ProductsPage(categoryName: category.categoryName),
                             ),
                           );
                         },
