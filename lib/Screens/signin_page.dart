@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/google_signin_button.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
+import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
 class SignInPage extends StatelessWidget {
+  final String buttonText;
+  final void Function() onPress;
+
+  const SignInPage({required this.buttonText, required this.onPress});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +40,10 @@ class SignInPage extends StatelessWidget {
             flex: 3,
             child: Container(
               child: Center(
-                child: GoogleSigninButton(),
+                child: GoogleSigninButton(
+                  buttonText: buttonText,
+                  onPress: onPress,
+                ),
               ),
               decoration: kBoxDecorationOfSigninButton,
             ),

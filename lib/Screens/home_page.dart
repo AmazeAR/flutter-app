@@ -24,7 +24,14 @@ class HomePage extends StatelessWidget {
             } else if (snapshot.hasData) {
               return CategoriesPage();
             } else {
-              return SignInPage();
+              return SignInPage(
+                buttonText: "SignIn With Google",
+                onPress: () async {
+                  final GoogleSignInProvider provider =
+                      Provider.of<GoogleSignInProvider>(context, listen: false);
+                  await provider.login();
+                },
+              );
             }
           },
         ),

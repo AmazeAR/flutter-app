@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Screens/Message.dart';
 import 'package:flutter_amaze_ar/Screens/personalCart_page.dart';
+import 'package:flutter_amaze_ar/Screens/signin_page.dart';
 import 'package:localstorage/localstorage.dart';
 
 class AppBarWithProfileIcon extends StatelessWidget {
@@ -22,7 +23,7 @@ class AppBarWithProfileIcon extends StatelessWidget {
                   backgroundImage: NetworkImage(
                       'https://lh3.googleusercontent.com/a-/AOh14Gi2_aWR5ZzS4EX03Jk2HyFrEZEOig7Nh_GxxQLTlw=s96-c'),
                 ),
-                onTap: () async{
+                onTap: () async {
                   // user profile btn get pressed
                   final storage = LocalStorage('amaz_ar');
                   await storage.ready;
@@ -54,7 +55,13 @@ class AppBarWithProfileIcon extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => Message()),
+                      builder: (BuildContext context) => SignInPage(
+                        buttonText: "Create Group",
+                        onPress: () {
+                          // create group button get pressed
+                        },
+                      ),
+                    ),
                   );
                 },
                 child: Icon(
