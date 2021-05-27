@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Screens/categories_page.dart';
-import 'package:flutter_amaze_ar/Screens/Message.dart';
+import 'package:flutter_amaze_ar/Screens/groupChat_page.dart';
+import 'package:flutter_amaze_ar/Screens/signin_page.dart';
 
 class AppBarWithoutProfileIcon extends StatelessWidget {
   @override
@@ -43,7 +44,19 @@ class AppBarWithoutProfileIcon extends StatelessWidget {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (BuildContext context) => Message()));
+                  builder: (BuildContext context) => SignInPage(
+                    buttonText: "Create Group",
+                    onPress: () {
+                      // create group button get pressed
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => GroupChat(),
+                        ),
+                      );
+                    },
+                  ),
+                ));
           },
           child: Icon(
             Icons.person_add_sharp,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Screens/Message.dart';
+import 'package:flutter_amaze_ar/Screens/groupChat_page.dart';
 import 'package:flutter_amaze_ar/Screens/personalCart_page.dart';
 import 'package:flutter_amaze_ar/Screens/signin_page.dart';
+import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:localstorage/localstorage.dart';
 
 class AppBarWithProfileIcon extends StatelessWidget {
@@ -29,11 +30,11 @@ class AppBarWithProfileIcon extends StatelessWidget {
                   await storage.ready;
                   final userJson = storage.getItem('user');
                   print(userJson);
-                  // UserModel user = UserModel.fromJson(userJson);
-                  // print(user.fullName);
-                  // print(user.emailId);
-                  // print(user.userId);
-                  // print(user.profileURL);
+                  UserModel user = UserModel.fromJson(userJson);
+                  print(user.fullName);
+                  print(user.emailId);
+                  print(user.userId);
+                  print(user.profileURL);
                 },
               ),
             ),
@@ -59,6 +60,12 @@ class AppBarWithProfileIcon extends StatelessWidget {
                         buttonText: "Create Group",
                         onPress: () {
                           // create group button get pressed
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => GroupChat(),
+                            ),
+                          );
                         },
                       ),
                     ),
