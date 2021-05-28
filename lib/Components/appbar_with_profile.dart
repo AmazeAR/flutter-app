@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Screens/groupChat_page.dart';
 import 'package:flutter_amaze_ar/Screens/personalCart_page.dart';
 import 'package:flutter_amaze_ar/Screens/signin_page.dart';
-import 'package:flutter_amaze_ar/models/user_model.dart';
-import 'package:localstorage/localstorage.dart';
+import 'package:flutter_amaze_ar/Screens/user_profile_page.dart';
 
 class AppBarWithProfileIcon extends StatelessWidget {
   @override
@@ -24,17 +23,14 @@ class AppBarWithProfileIcon extends StatelessWidget {
                   backgroundImage: NetworkImage(
                       'https://lh3.googleusercontent.com/a-/AOh14Gi2_aWR5ZzS4EX03Jk2HyFrEZEOig7Nh_GxxQLTlw=s96-c'),
                 ),
-                onTap: () async {
+                onTap: () {
                   // user profile btn get pressed
-                  final storage = LocalStorage('amaz_ar');
-                  await storage.ready;
-                  final userJson = storage.getItem('user');
-                  print(userJson);
-                  UserModel user = UserModel.fromJson(userJson);
-                  print(user.fullName);
-                  print(user.emailId);
-                  print(user.userId);
-                  print(user.profileURL);
+                  showModalBottomSheet<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return UserProfile();
+                    },
+                  );
                 },
               ),
             ),
