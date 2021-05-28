@@ -55,6 +55,7 @@ class AppBarWithoutProfileIcon extends StatelessWidget {
                         ),
                       );
                     },
+                    isSignInPage: false,
                   ),
                 ));
           },

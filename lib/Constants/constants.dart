@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kBoxDecorationOfSigninButton = BoxDecoration(
+const kBoxDecorationOfSigninPage = BoxDecoration(
   borderRadius: BorderRadius.only(
     topLeft: Radius.circular(20.0),
     topRight: Radius.circular(20.0),
@@ -18,6 +18,18 @@ const kTitleTextStyleOfSigninPage = TextStyle(
   color: Colors.white,
   fontSize: 60.0,
   fontWeight: FontWeight.bold,
+);
+
+const kTextFieldInputDecoration = InputDecoration(
+  filled: true,
+  fillColor: Color(0xFFB3E5FC),
+  hintText: "Enter the Group Meeting Name",
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(10.0),
+    ),
+    borderSide: BorderSide.none,
+  ),
 );
 
 const kDefaultProfileURL =

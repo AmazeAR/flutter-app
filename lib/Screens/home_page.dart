@@ -30,7 +30,9 @@ class HomePage extends StatelessWidget {
                   final GoogleSignInProvider provider =
                       Provider.of<GoogleSignInProvider>(context, listen: false);
                   await provider.login();
+                
                 },
+                isSignInPage: true,
               );
             }
           },

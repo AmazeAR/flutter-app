@@ -63,6 +63,7 @@ class AppBarWithProfileIcon extends StatelessWidget {
                             ),
                           );
                         },
+                        isSignInPage: false,
                       ),
                     ),
                   );
