@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
+import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
+import 'package:provider/provider.dart';
 
 class UserProfile extends StatefulWidget {
   @override
@@ -8,7 +10,6 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-
   late Future<UserModel> userFuture;
 
   @override
@@ -24,23 +25,52 @@ class _UserProfileState extends State<UserProfile> {
         builder: (BuildContext context, AsyncSnapshot<UserModel> snapshot) {
           if (snapshot.hasData) {
             UserModel user = snapshot.data!;
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 80, 0, 80),
-                child: Column(
-                  children: [
-                    Image.network(user.profileURL),
-                    SizedBox(height: 80),
-                    Text(
-                      user.fullName,
+            return Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.network(user.profileURL),
+                  Text(
+                    user.fullName,
+                    style: TextStyle(
+                        color: primaryColor,
+                        fontSize: 36,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "signed in as ${user.emailId}",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // signout button  get pressed
+                      final GoogleSignInProvider provider =
+                          Provider.of<GoogleSignInProvider>(context);
+                      provider.logout();
+                    },
+                    child: Text(
+                      "Sign out",
                       style: TextStyle(
-                          color: primaryColor,
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
+                        color: Colors.white,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith(
+                        (states) => primaryColor,
+                      ),
+                    ),
+                  )
+                ],
               ),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text('${snapshot.error}'),
             );
           }
           return Center(
