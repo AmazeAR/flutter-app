@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'Screens/home_page.dart';
+import 'Screens/3DView.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'Screens/ClickMe.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'AmazAR',
       theme: ThemeData.light().copyWith(),
-      home: HomePage(),
+      home: ClickMe(),
     );
   }
 }

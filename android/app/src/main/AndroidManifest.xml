@@ -1,5 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_amaze_ar">
+
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-feature android:name="android.hardware.camera.ar" android:required="true"/>
+
+
+
+
+
+
+
+
    <application
         android:label="flutter_amaze_ar"
         android:icon="@mipmap/ic_launcher">
@@ -27,6 +39,7 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
+            <meta-data android:name="com.google.ar.core" android:value="required" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

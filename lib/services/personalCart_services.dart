@@ -18,8 +18,6 @@ class HttpPersonalCartServices {
       var body = json.decode(res.body);
       List<dynamic> cartJson = body['data'];
 
-      //TODO: need a check for empty cart
-
       List<ProductModel> cart = cartJson
           .map((dynamic cartItem) => ProductModel.fromJson(cartItem))
           .toList();
