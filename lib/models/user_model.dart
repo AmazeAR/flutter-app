@@ -16,10 +16,15 @@ class UserModel {
     final storage = LocalStorage('amaz_ar');
     await storage.ready;
     final userJson = storage.getItem('user');
-    // print(userJson);
     return UserModel.fromJson(userJson);
   }
-  
+
+  static Future<String> getUserIdFromLocalStorage() async {
+    final storage = LocalStorage('amaz_ar');
+    await storage.ready;
+    final userJson = storage.getItem('user');
+    return (UserModel.fromJson(userJson)).userId;
+  }
 
   Map<String, dynamic> toJson() {
     return ({

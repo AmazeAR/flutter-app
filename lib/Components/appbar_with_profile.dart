@@ -112,10 +112,13 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                       child: IconButton(
                         onPressed: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      PersonalCart()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => PersonalCart(
+                                userId: user.userId,
+                              ),
+                            ),
+                          );
                         },
                         icon: Icon(
                           Icons.shopping_cart,

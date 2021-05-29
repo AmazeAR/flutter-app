@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
-import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
-import 'package:provider/provider.dart';
 
 class UserProfile extends StatelessWidget {
   final UserModel user;
