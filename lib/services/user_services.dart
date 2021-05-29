@@ -23,6 +23,8 @@ class HttpUserServices {
       var body = json.decode(res.body);
       print(body);
     }
-    throw "error";
+    else {
+      throw Exception("Failed to post user to database!");
+    }
   }
 }

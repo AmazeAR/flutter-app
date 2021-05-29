@@ -12,19 +12,37 @@ class HttpPersonalCartServices {
 
       var body = json.decode(res.body);
       var cartJson = body['data'];
-
+      print(cartJson);
       if (cartJson == null) {
+        print("empty cart");
         throw Exception("Personal cart is emprty!");
       } else {
-        List<ProductModel> cart = cartJson
+        List<dynamic> cartJsonList = cartJson;
+        List<ProductModel> cart = cartJsonList
             .map((dynamic cartItem) => ProductModel.fromJson(cartItem))
             .toList();
         return cart;
       }
-      //TODO: need a check for empty cart
-
     } else {
       throw Exception("Failed to fetch personalCart from personalCart/user_id");
+    }
+  }
+
+  Future<void> addToPersonalCart(
+      {required String userId, required String productId}) async {
+    http.Response res = await http.post(
+      Uri.https('amazar-v1.herokuapp.com', 'personalCart/$userId/$productId'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    if (res.statusCode == 200) {
+      print("request to add to cart successfully executed!");
+      var data = jsonDecode(res.body)["data"];
+      print(data);
+      return;
+    } else {
+      throw Exception("Failed to add product to personal cart!");
     }
   }
 }

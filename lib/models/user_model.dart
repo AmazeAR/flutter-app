@@ -12,6 +12,16 @@ class UserModel {
       required this.emailId,
       this.profileURL = ''});
 
+  static String getUserId() {
+    final storage = LocalStorage("amaz_ar");
+    return UserModel.fromJson(storage.getItem("user")).userId;
+  }
+
+  static UserModel getUser() {
+    final storage = LocalStorage("amaz_ar");
+    return UserModel.fromJson(storage.getItem("user"));
+  }
+
   static Future<UserModel> getUserFromLocalStorage() async {
     final storage = LocalStorage('amaz_ar');
     await storage.ready;

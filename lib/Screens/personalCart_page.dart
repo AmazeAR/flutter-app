@@ -50,7 +50,9 @@ class _PersonalCartState extends State<PersonalCart> {
                       is3DModel: item.is3DModel))
                   .toList(),
             );
-          } else if (snapshot.hasError) { // when cart is empty
+          } else if (snapshot.hasError) {
+            // when cart is empty
+            print("haserror ${snapshot.error}");
             return Center(
               child: Container(
                 height: 100.0,
