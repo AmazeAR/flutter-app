@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Screens/productDes_page.dart';
+import 'package:flutter_amaze_ar/services/groupCart_services.dart';
 
 class PersonalCartCard extends StatelessWidget {
   final String id;
@@ -93,7 +94,12 @@ class PersonalCartCard extends StatelessWidget {
                       height: size.height * 0.05,
                     ),
                     TextButton.icon(
-                      onPressed: () {},
+                      onPressed: () async { // to add into group cart
+                        HttpGroupCartServices groupCartServices =
+                            HttpGroupCartServices();
+                        await groupCartServices.addToGroupCart(
+                            groupId: "123", productId: id);
+                      },
                       label: Text(''),
                       icon: Icon(
                         Icons.add_shopping_cart,

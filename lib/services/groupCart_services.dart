@@ -3,11 +3,9 @@ import 'package:flutter_amaze_ar/models/product_model.dart';
 import 'package:http/http.dart' as http;
 
 class HttpGroupCartServices {
-
-
   Future<List<ProductModel>> getGroupCart({required String groupId}) async {
     final res = await http
-        .get(Uri.https('amazar-v1.herokuapp.com', '/personalCart/$groupId'));
+        .get(Uri.https('amazar-v1.herokuapp.com', '/groupCart/$groupId'));
 
     // print(res.statusCode);
     if (res.statusCode == 200) {
@@ -30,7 +28,7 @@ class HttpGroupCartServices {
     }
   }
 
-   Future<void> addToGroupCart(
+  Future<void> addToGroupCart(
       {required String groupId, required String productId}) async {
     http.Response res = await http.post(
       Uri.https('amazar-v1.herokuapp.com', 'groupCart/$groupId/$productId'),

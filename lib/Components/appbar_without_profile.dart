@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Screens/categories_page.dart';
-import 'package:flutter_amaze_ar/Screens/groupChat_page.dart';
-import 'package:flutter_amaze_ar/Screens/signin_page.dart';
 
 class AppBarWithoutProfileIcon extends StatelessWidget {
   @override
@@ -11,18 +9,26 @@ class AppBarWithoutProfileIcon extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.white,
       title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Icon(
-            Icons.group,
-            color: primaryColor,
+          Expanded(
+            flex: 1,
+            child: Icon(
+              Icons.group,
+              color: primaryColor,
+            ),
           ),
-          SizedBox(width: size.width * 0.05),
-          Text(
-            "Kapil's Birthday",
-            style: TextStyle(
-                // fontSize: h2,
-                color: primaryColor,
-                fontWeight: FontWeight.bold),
+          // SizedBox(width: size.width * 0.05),
+          Expanded(
+            flex: 5,
+            child: Text(
+              "Kapil's Birthday",
+              style: TextStyle(
+                  // fontSize: h2,
+                  color: primaryColor,
+                  fontWeight: FontWeight.bold),
+              overflow: TextOverflow.fade,
+            ),
           ),
           SizedBox(width: size.width * 0.02),
         ],
@@ -41,23 +47,7 @@ class AppBarWithoutProfileIcon extends StatelessWidget {
             )),
         GestureDetector(
           onTap: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => SignInPage(
-                    buttonText: "Create Group",
-                    onPress: () {
-                      // create group button get pressed
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => GroupChat(),
-                        ),
-                      );
-                    },
-                    isSignInPage: false,
-                  ),
-                ));
+            // add member button get pressed
           },
           child: Icon(
             Icons.person_add_sharp,
@@ -65,17 +55,6 @@ class AppBarWithoutProfileIcon extends StatelessWidget {
           ),
         ),
         SizedBox(width: size.width * 0.02),
-        IconButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => CategoriesPage()));
-            },
-            icon: Icon(
-              Icons.shopping_cart,
-              color: primaryColor,
-            )),
       ],
     );
   }
