@@ -28,7 +28,9 @@ class _ProductsPageState extends State<ProductsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(80), child: AppBarWithProfileIcon()),
+        preferredSize: Size.fromHeight(70),
+        child: AppBarWithProfileIcon(),
+      ),
       body: Container(
         color: Colors.black12,
         child: FutureBuilder(
