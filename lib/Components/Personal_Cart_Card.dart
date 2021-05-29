@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Screens/productDes_page.dart';
 
 class PersonalCartCard extends StatelessWidget {
   final String id;
@@ -24,68 +25,86 @@ class PersonalCartCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Container(
-      child: Card(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              // crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Image.network(
-                  proImage,
-                  height: size.height * 0.2,
-                  width: size.width * 0.3,
-                ),
-                SizedBox(width: size.width * 0.02),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => ProductDescriptionPage(
+                productId: id,
+                categoryId: catId,
+                categoryName: catName,
+                productName: proName,
+                brandName: brandName,
+                productURL: proImage,
+                price: price,
+                is3DModel: is3DModel),
+          ),
+        );
+      },
+      child: Container(
+        child: Card(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                // crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Image.network(
+                    proImage,
+                    height: size.height * 0.2,
+                    width: size.width * 0.3,
+                  ),
+                  SizedBox(width: size.width * 0.02),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                          height: size.height * 0.05,
+                          width: size.width * 0.4,
+                          child: Text(
+                            proName,
+                            maxLines: 1,
+                            // overflow: TextOverflow.fade,
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          )),
+                      Text(
+                        price,
+                        style: TextStyle(fontSize: 16),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                child: Column(
                   children: [
+                    TextButton.icon(
+                      onPressed: () {},
+                      label: Text(""),
+                      icon: Icon(
+                        Icons.highlight_remove_rounded,
+                        size: 30,
+                      ),
+                    ),
                     SizedBox(
-                        height: size.height * 0.05,
-                        width: size.width * 0.4,
-                        child: Text(
-                          proName,
-                          maxLines: 1,
-                          // overflow: TextOverflow.fade,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        )),
-                    Text(
-                      price,
-                      style: TextStyle(fontSize: 16),
+                      height: size.height * 0.05,
+                    ),
+                    TextButton.icon(
+                      onPressed: () {},
+                      label: Text(''),
+                      icon: Icon(
+                        Icons.add_shopping_cart,
+                        size: 30,
+                      ),
                     )
                   ],
                 ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-              child: Column(
-                children: [
-                  TextButton.icon(
-                    onPressed: () {},
-                    label: Text(""),
-                    icon: Icon(
-                      Icons.highlight_remove_rounded,
-                      size: 30,
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.05,
-                  ),
-                  TextButton.icon(
-                    onPressed: () {},
-                    label: Text(''),
-                    icon: Icon(
-                      Icons.add_shopping_cart,
-                      size: 30,
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
