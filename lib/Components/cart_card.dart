@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Screens/productDes_page.dart';
-import 'package:flutter_amaze_ar/services/groupCart_services.dart';
+import 'package:flutter_amaze_ar/models/user_model.dart';
+import 'package:flutter_amaze_ar/services/cart_services.dart';
 
 class PersonalCartCard extends StatelessWidget {
-  final String id;
+  final String prodId;
   final String catId;
   final String catName;
   final String proName;
@@ -11,18 +12,37 @@ class PersonalCartCard extends StatelessWidget {
   final String proImage;
   final String price;
   final bool is3DModel;
+  final bool isPersonalCartCard;
 
   const PersonalCartCard(
       {Key? key,
-      required this.id,
+      required this.prodId,
       required this.catId,
       required this.catName,
       required this.proName,
       required this.brandName,
       required this.proImage,
       required this.price,
-      required this.is3DModel})
+      required this.is3DModel,
+      required this.isPersonalCartCard})
       : super(key: key);
+
+  String getId() {
+    if (isPersonalCartCard) {  // add to group cart
+      return UserModel.getGroupId();
+    }
+    else{
+      return UserModel.getUserId();  // add to personal cart
+    }
+  }
+
+  void addToOppositeCart() async {
+    HttpCartServices cartServices = HttpCartServices();
+
+    await cartServices.addToCart(
+        id: getId(), productId: prodId, isPersonalCart: !isPersonalCartCard);
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -32,7 +52,7 @@ class PersonalCartCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (BuildContext context) => ProductDescriptionPage(
-                productId: id,
+                productId: prodId,
                 categoryId: catId,
                 categoryName: catName,
                 productName: proName,
@@ -94,12 +114,7 @@ class PersonalCartCard extends StatelessWidget {
                       height: size.height * 0.05,
                     ),
                     TextButton.icon(
-                      onPressed: () async { // to add into group cart
-                        HttpGroupCartServices groupCartServices =
-                            HttpGroupCartServices();
-                        await groupCartServices.addToGroupCart(
-                            groupId: "123", productId: id);
-                      },
+                      onPressed: addToOppositeCart,
                       label: Text(''),
                       icon: Icon(
                         Icons.add_shopping_cart,

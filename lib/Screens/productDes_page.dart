@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar_with_profile.dart';
 import 'package:flutter_amaze_ar/Components/descrption_widget.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
-import 'package:flutter_amaze_ar/services/groupCart_services.dart';
-import 'package:flutter_amaze_ar/services/personalCart_services.dart';
+import 'package:flutter_amaze_ar/services/cart_services.dart';
 
 class ProductDescriptionPage extends StatelessWidget {
   final String productId;
@@ -26,12 +25,6 @@ class ProductDescriptionPage extends StatelessWidget {
       required this.price,
       required this.is3DModel})
       : super(key: key);
-
-  String getId() {
-    String id = UserModel.getUserId();
-    print(id);
-    return id;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,10 +109,12 @@ class ProductDescriptionPage extends StatelessWidget {
               children: [
                 ElevatedButton.icon(
                   onPressed: () async {
-                    HttpPersonalCartServices personalCartServices =
-                        HttpPersonalCartServices();
-                    await personalCartServices.addToPersonalCart(
-                        userId: getId(), productId: productId);
+                    HttpCartServices personalCartServices =
+                        HttpCartServices();
+                    await personalCartServices.addToCart(
+                        id: UserModel.getUserId(),
+                        productId: productId,
+                        isPersonalCart: true);
                   },
                   label: Text("Personal Cart"),
                   icon: Icon(Icons.add_shopping_cart_outlined),
@@ -135,10 +130,10 @@ class ProductDescriptionPage extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () async {
                     //TODO should be diabled when there is no group
-                    HttpGroupCartServices groupCartServices =
-                        HttpGroupCartServices();
-                    await groupCartServices.addToGroupCart(
-                        groupId: "123", productId: productId);
+                    HttpCartServices personalCartServices =
+                        HttpCartServices();
+                    await personalCartServices.addToCart(
+                        id: "123", productId: productId, isPersonalCart: false);
                   },
                   label: Text("Group Cart"),
                   icon: Icon(Icons.add_shopping_cart_outlined),

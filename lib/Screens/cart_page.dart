@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Components/Personal_Cart_Card.dart';
+import 'package:flutter_amaze_ar/Components/cart_card.dart';
 import 'package:flutter_amaze_ar/Components/appbar_with_profile.dart';
 import 'package:flutter_amaze_ar/models/product_model.dart';
-import 'package:flutter_amaze_ar/services/personalCart_services.dart';
+import 'package:flutter_amaze_ar/services/cart_services.dart';
 
-class PersonalCart extends StatefulWidget {
-  final String userId;
+class Cart extends StatefulWidget {
+  final String id;
+  final bool isPersonalCartPage;
 
-  const PersonalCart({required this.userId});
+  const Cart({required this.id, required this.isPersonalCartPage});
 
   @override
-  _PersonalCartState createState() => _PersonalCartState();
+  _CartState createState() => _CartState();
 }
 
-class _PersonalCartState extends State<PersonalCart> {
-  final HttpPersonalCartServices _httpService = HttpPersonalCartServices();
+class _CartState extends State<Cart> {
+  final HttpCartServices _httpService = HttpCartServices();
 
   late Future<List<ProductModel>> cartFuture;
 
   @override
   void initState() {
     super.initState();
-    cartFuture = _httpService.getPersoanlCart(userId: widget.userId);
+    cartFuture = _httpService.getCart(
+        id: widget.id, isPersonalCart: widget.isPersonalCartPage);
   }
 
   @override
@@ -39,15 +41,19 @@ class _PersonalCartState extends State<PersonalCart> {
             List<ProductModel> cart = snapshot.data!;
             return ListView(
               children: cart
-                  .map((ProductModel item) => PersonalCartCard(
-                      id: item.productId,
+                  .map(
+                    (ProductModel item) => PersonalCartCard(
+                      prodId: item.productId,
                       catId: item.categoryId,
                       catName: item.categoryName,
                       proName: item.productName,
                       brandName: item.brandName,
                       proImage: item.productURL,
                       price: item.price,
-                      is3DModel: item.is3DModel))
+                      is3DModel: item.is3DModel,
+                      isPersonalCartCard: widget.isPersonalCartPage,
+                    ),
+                  )
                   .toList(),
             );
           } else if (snapshot.hasError) {

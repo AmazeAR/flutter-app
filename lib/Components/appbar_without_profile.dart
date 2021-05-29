@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
-import 'package:flutter_amaze_ar/Screens/categories_page.dart';
+import 'package:flutter_amaze_ar/Screens/cart_page.dart';
 
 class AppBarWithoutProfileIcon extends StatelessWidget {
   @override
@@ -37,9 +37,12 @@ class AppBarWithoutProfileIcon extends StatelessWidget {
         IconButton(
             onPressed: () {
               Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => CategoriesPage()));
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      Cart(id: "123", isPersonalCartPage: false),
+                ),
+              );
             },
             icon: Icon(
               Icons.shopping_cart,
@@ -47,7 +50,7 @@ class AppBarWithoutProfileIcon extends StatelessWidget {
             )),
         GestureDetector(
           onTap: () {
-            // add member button get pressed
+            // addMember button get pressed
           },
           child: Icon(
             Icons.person_add_sharp,

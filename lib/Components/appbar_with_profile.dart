@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:flutter_amaze_ar/Screens/groupChat_page.dart';
-import 'package:flutter_amaze_ar/Screens/personalCart_page.dart';
+import 'package:flutter_amaze_ar/Screens/cart_page.dart';
 import 'package:flutter_amaze_ar/Screens/signin_page.dart';
 import 'package:flutter_amaze_ar/Screens/user_profile_page.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
@@ -114,8 +114,8 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (BuildContext context) => PersonalCart(
-                                userId: user.userId,
+                              builder: (BuildContext context) => Cart(
+                                id: user.userId,isPersonalCartPage: true
                               ),
                             ),
                           );

@@ -17,6 +17,11 @@ class UserModel {
     return UserModel.fromJson(storage.getItem("user")).userId;
   }
 
+  static String getGroupId() {
+    String grpId = "123";
+    return grpId;
+  }
+
   static UserModel getUser() {
     final storage = LocalStorage("amaz_ar");
     return UserModel.fromJson(storage.getItem("user"));
