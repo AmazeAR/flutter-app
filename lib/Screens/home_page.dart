@@ -9,33 +9,30 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ChangeNotifierProvider<GoogleSignInProvider>(
-        create: (context) => GoogleSignInProvider(),
-        child: StreamBuilder(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            final GoogleSignInProvider provider =
-                Provider.of<GoogleSignInProvider>(context);
+      body: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          final GoogleSignInProvider provider =
+              Provider.of<GoogleSignInProvider>(context);
 
-            if (provider.getIsSigningIn() == true) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (snapshot.hasData) {
-              return CategoriesPage();
-            } else {
-              return SignInPage(
-                buttonText: "SignIn With Google",
-                onPress: () async {
-                  final GoogleSignInProvider provider =
-                      Provider.of<GoogleSignInProvider>(context, listen: false);
-                  await provider.login();
-                },
-                isSignInPage: true,
-              );
-            }
-          },
-        ),
+          if (provider.getIsSigningIn() == true) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasData) {
+            return CategoriesPage();
+          } else {
+            return SignInPage(
+              buttonText: "SignIn With Google",
+              onPress: () async {
+                final GoogleSignInProvider provider =
+                    Provider.of<GoogleSignInProvider>(context, listen: false);
+                await provider.login();
+              },
+              isSignInPage: true,
+            );
+          }
+        },
       ),
     );
   }

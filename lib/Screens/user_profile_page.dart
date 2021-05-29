@@ -6,8 +6,9 @@ import 'package:provider/provider.dart';
 
 class UserProfile extends StatelessWidget {
   final UserModel user;
+  final void Function() onSignOut;
 
-  const UserProfile({required this.user});
+  const UserProfile({required this.user, required this.onSignOut});
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +30,7 @@ class UserProfile extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {
-              // signout button  get pressed
-              final GoogleSignInProvider provider =
-                  Provider.of<GoogleSignInProvider>(context);
-              provider.logout();
-            },
+            onPressed: onSignOut,
             child: Text(
               "Sign out",
               style: TextStyle(

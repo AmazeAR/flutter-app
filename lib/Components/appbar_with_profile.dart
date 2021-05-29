@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:flutter_amaze_ar/Screens/groupChat_page.dart';
 import 'package:flutter_amaze_ar/Screens/personalCart_page.dart';
 import 'package:flutter_amaze_ar/Screens/signin_page.dart';
 import 'package:flutter_amaze_ar/Screens/user_profile_page.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
+import 'package:provider/provider.dart';
 
 class AppBarWithProfileIcon extends StatefulWidget {
   @override
@@ -47,7 +49,17 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                           showModalBottomSheet<void>(
                             context: context,
                             builder: (BuildContext context) {
-                              return UserProfile(user: user);
+                              return UserProfile(
+                                user: user,
+                                onSignOut: () {
+                                  // signout button  get pressed
+                                  final GoogleSignInProvider provider =
+                                      Provider.of<GoogleSignInProvider>(context,
+                                          listen: false);
+                                  provider.logout();
+                                  Navigator.pop(context);
+                                },
+                              );
                             },
                           );
                         },
