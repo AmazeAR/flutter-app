@@ -57,4 +57,21 @@ class HttpCartServices {
       throw Exception("Failed to add product to $cartName!");
     }
   }
+
+  Future<void> deleteFromCart(
+      {required String userId, required String productId}) async {
+    String url = '/personalCart/$userId/$productId';
+
+    http.Response res =
+        await http.delete(Uri.https('amazar-v1.herokuapp.com', url));
+    if (res.statusCode == 200) {
+      print("Deleted from cart");
+      var data = jsonDecode(res.body)["data"];
+      print(data);
+      return;
+    } else {
+      throw Exception("Erroeeref");
+    }
+    
+  }
 }
