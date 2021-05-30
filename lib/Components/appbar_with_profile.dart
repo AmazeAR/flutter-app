@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:flutter_amaze_ar/Screens/cart_page.dart';
 import 'package:flutter_amaze_ar/Screens/groupMeet_page.dart';
-import 'package:flutter_amaze_ar/Screens/signin_page.dart';
 import 'package:flutter_amaze_ar/Screens/user_profile_page.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:provider/provider.dart';

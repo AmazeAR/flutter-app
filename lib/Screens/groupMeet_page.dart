@@ -35,46 +35,42 @@ class _MeetingPageState extends State<MeetingPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return MaterialApp(
-      home: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70),
-          child: AppBarWithProfileIcon(),
-        ),
-        body: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-          ),
-          child: kIsWeb
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: width * 0.30,
-                      child: meetConfig(),
-                    ),
-                    Container(
-                        width: width * 0.60,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                              color: Colors.white54,
-                              child: SizedBox(
-                                width: width * 0.60 * 0.70,
-                                height: width * 0.60 * 0.70,
-                                child: JitsiMeetConferencing(
-                                  extraJS: [
-                                    // extraJs setup example
-                                    '<script>function echo(){console.log("echo!!!")};</script>',
-                                    '<script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>'
-                                  ],
-                                ),
-                              )),
-                        ))
-                  ],
-                )
-              : meetConfig(),
-        ),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: AppBarWithProfileIcon(),
+      ),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 25.0),
+        child: kIsWeb
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: width * 0.30,
+                    child: meetConfig(),
+                  ),
+                  Container(
+                      width: width * 0.60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Card(
+                            color: Colors.white54,
+                            child: SizedBox(
+                              width: width * 0.60 * 0.70,
+                              height: width * 0.60 * 0.70,
+                              child: JitsiMeetConferencing(
+                                extraJS: [
+                                  // extraJs setup example
+                                  '<script>function echo(){console.log("echo!!!")};</script>',
+                                  '<script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>'
+                                ],
+                              ),
+                            )),
+                      ))
+                ],
+              )
+            : meetConfig(),
       ),
     );
   }
@@ -82,10 +78,7 @@ class _MeetingPageState extends State<MeetingPage> {
   Widget meetConfig() {
     return SingleChildScrollView(
       child: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 16.0,
-          ),
+        children: [
           TextField(
             onChanged: (newMeetingName) {
               setState(() {
@@ -94,11 +87,8 @@ class _MeetingPageState extends State<MeetingPage> {
             },
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              labelText: "Room",
+              labelText: "Meeting Room",
             ),
-          ),
-          SizedBox(
-            height: 14.0,
           ),
           Divider(
             height: 48.0,
@@ -109,7 +99,8 @@ class _MeetingPageState extends State<MeetingPage> {
             width: double.maxFinite,
             child: ElevatedButton(
               onPressed: () {
-                meetServices.joinMeeting(meetName: meetingName);
+                meetServices.joinMeeting(
+                    meetName: (meetingName.replaceAll(" ", '_')));
               },
               child: Text(
                 "Join Meeting",

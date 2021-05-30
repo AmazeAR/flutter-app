@@ -3,8 +3,6 @@ import 'package:uuid/uuid.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
-import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart'
-    as jitsiFeatureFlag;
 import 'package:jitsi_meet/jitsi_meet.dart';
 
 class MeetServices {
@@ -38,10 +36,12 @@ class MeetServices {
       }
     }
     // Define meetings options here
+
     var options = JitsiMeetingOptions(room: meetName)
       ..serverURL = serverUrl
       ..userDisplayName = user.fullName
       ..userEmail = user.emailId
+      ..userAvatarURL = user.profileURL
       ..iosAppBarRGBAColor = iosAppBarRGBAColor
       ..audioMuted = true
       ..videoMuted = true
