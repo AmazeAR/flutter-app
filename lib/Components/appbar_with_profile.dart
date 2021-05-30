@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
-import 'package:flutter_amaze_ar/Screens/groupChat_page.dart';
 import 'package:flutter_amaze_ar/Screens/cart_page.dart';
 import 'package:flutter_amaze_ar/Screens/groupMeet_page.dart';
 import 'package:flutter_amaze_ar/Screens/signin_page.dart';
@@ -84,20 +83,7 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (BuildContext context) => SignInPage(
-                                buttonText: "Create new meeting",
-                                onPress: () {
-                                  // create group button get pressed
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          Meeting(),
-                                    ),
-                                  );
-                                },
-                                isSignInPage: false,
-                              ),
+                              builder: (BuildContext context) => MeetingPage(),
                             ),
                           );
                         },
