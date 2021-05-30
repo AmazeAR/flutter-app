@@ -18,7 +18,8 @@ class UserModel {
   }
 
   static String getGroupId() {
-    String grpId = "123";
+    final storage = LocalStorage("amaz_ar");
+    String grpId = storage.getItem("groupId");
     return grpId;
   }
 

@@ -64,9 +64,8 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                         },
                       ),
                     ),
-                    Spacer(),
                     Expanded(
-                      flex: 3,
+                      flex: 2,
                       child: Text(
                         "AmazAR",
                         style: TextStyle(
@@ -76,7 +75,7 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                       ),
                     ),
                     Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -94,7 +93,7 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                       ),
                     ),
                     Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: IconButton(
                         onPressed: () {
                           Navigator.push(
@@ -111,7 +110,27 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                           size: 30.0,
                         ),
                       ),
-                    )
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => Cart(
+                                  id: UserModel.getGroupId(),
+                                  isPersonalCartPage: false),
+                            ),
+                          );
+                        },
+                        icon: Icon(
+                          Icons.local_mall,
+                          color: Colors.white,
+                          size: 30.0,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

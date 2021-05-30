@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:localstorage/localstorage.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
@@ -60,13 +61,16 @@ class MeetServices {
       options,
       listener: JitsiMeetingListener(
           onConferenceWillJoin: (message) {
-            debugPrint("${options.room} will join with message: $message");
+            // debugPrint("${options.room} will join with message: $message");
           },
           onConferenceJoined: (message) {
-            debugPrint("${options.room} joined with message: $message");
+            final LocalStorage storage = LocalStorage('amaz_ar');
+            storage.setItem("groupId", meetName);
+            print(storage.getItem("groupId"));
+            // debugPrint("${options.room} joined with message: $message");
           },
           onConferenceTerminated: (message) {
-            debugPrint("${options.room} terminated with message: $message");
+            // debugPrint("${options.room} terminated with message: $message");
           },
           genericListeners: [
             JitsiGenericListener(
@@ -79,18 +83,20 @@ class MeetServices {
   }
 
   void onConferenceWillJoin(message) {
-    debugPrint("_onConferenceWillJoin broadcasted with message: $message");
+    // debugPrint("_onConferenceWillJoin broadcasted with message: $message");
   }
 
   void onConferenceJoined(message) {
-    debugPrint("_onConferenceJoined broadcasted with message: $message");
+    // final LocalStorage storage = LocalStorage('amaz_ar');
+    // storage.setItem("groupId", "123");
+    // debugPrint("_onConferenceJoined broadcasted with message: $message");
   }
 
   void onConferenceTerminated(message) {
-    debugPrint("_onConferenceTerminated broadcasted with message: $message");
+    // debugPrint("_onConferenceTerminated broadcasted with message: $message");
   }
 
   onError(error) {
-    debugPrint("_onError broadcasted: $error");
+    // debugPrint("_onError broadcasted: $error");
   }
 }

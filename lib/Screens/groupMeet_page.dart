@@ -22,7 +22,8 @@ class _MeetingPageState extends State<MeetingPage> {
           onConferenceWillJoin: meetServices.onConferenceWillJoin,
           onConferenceJoined: meetServices.onConferenceJoined,
           onConferenceTerminated: meetServices.onConferenceTerminated,
-          onError: meetServices.onError),
+          onError: meetServices.onError
+          ),
     );
   }
 
@@ -101,6 +102,7 @@ class _MeetingPageState extends State<MeetingPage> {
               onPressed: () {
                 meetServices.joinMeeting(
                     meetName: (meetingName.replaceAll(" ", '_')));
+                Navigator.pop(context);
               },
               child: Text(
                 "Join Meeting",

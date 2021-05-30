@@ -29,7 +29,6 @@ class HomePage extends StatelessWidget {
                     Provider.of<GoogleSignInProvider>(context, listen: false);
                 await provider.login();
               },
-              isSignInPage: true,
             );
           }
         },
