@@ -27,7 +27,18 @@ class PersonalCartCard extends StatelessWidget {
       required this.isPersonalCartCard})
       : super(key: key);
 
+  final HttpCartServices cartServices = HttpCartServices();
+
   String getId() {
+    // for deleting
+    if (isPersonalCartCard) {
+      return UserModel.getUserId();
+    } else {
+      return UserModel.getGroupId();
+    }
+  }
+
+  String getOppositeId() {
     if (isPersonalCartCard) {
       // add to group cart
       return UserModel.getGroupId();
@@ -35,10 +46,12 @@ class PersonalCartCard extends StatelessWidget {
       return UserModel.getUserId(); // add to personal cart
     }
   }
-  HttpCartServices cartServices = HttpCartServices();
+
   void addToOppositeCart() async {
     await cartServices.addToCart(
-        id: getId(), productId: prodId, isPersonalCart: !isPersonalCartCard);
+        id: getOppositeId(),
+        productId: prodId,
+        isPersonalCart: !isPersonalCartCard);
   }
 
   @override
@@ -102,7 +115,10 @@ class PersonalCartCard extends StatelessWidget {
                   children: [
                     TextButton.icon(
                       onPressed: () async {
-                       await cartServices.deleteFromCart(userId: UserModel.getUserId(), productId: prodId);
+                        await cartServices.deleteFromCart(
+                            isPersonalCart: isPersonalCartCard,
+                            id: getId(),
+                            productId: prodId);
                       },
                       label: Text(""),
                       icon: Icon(

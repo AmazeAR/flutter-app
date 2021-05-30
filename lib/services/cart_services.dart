@@ -59,19 +59,27 @@ class HttpCartServices {
   }
 
   Future<void> deleteFromCart(
-      {required String userId, required String productId}) async {
-    String url = '/personalCart/$userId/$productId';
+    {required String id,
+    required String productId,
+    required bool isPersonalCart}) async {
+
+
+    String url = (isPersonalCart)
+        ? '/personalCart/$id/$productId'
+        : '/groupCart/$id/$productId';
+
+    String cartName = (isPersonalCart) ? 'personal cart' : 'group cart';
 
     http.Response res =
         await http.delete(Uri.https('amazar-v1.herokuapp.com', url));
+        
     if (res.statusCode == 200) {
-      print("Deleted from cart");
+      print("item get deleted from $cartName ");
       var data = jsonDecode(res.body)["data"];
       print(data);
       return;
     } else {
-      throw Exception("Erroeeref");
+      throw Exception("Failed to delete item from $cartName");
     }
-    
   }
 }
