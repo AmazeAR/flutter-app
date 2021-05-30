@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:flutter_amaze_ar/Screens/groupChat_page.dart';
 import 'package:flutter_amaze_ar/Screens/cart_page.dart';
+import 'package:flutter_amaze_ar/Screens/groupMeet_page.dart';
 import 'package:flutter_amaze_ar/Screens/signin_page.dart';
 import 'package:flutter_amaze_ar/Screens/user_profile_page.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
@@ -84,14 +85,14 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) => SignInPage(
-                                buttonText: "Create Group",
+                                buttonText: "Create new meeting",
                                 onPress: () {
                                   // create group button get pressed
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          GroupChat(),
+                                          Meeting(),
                                     ),
                                   );
                                 },
@@ -115,8 +116,7 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) => Cart(
-                                id: user.userId,isPersonalCartPage: true
-                              ),
+                                  id: user.userId, isPersonalCartPage: true),
                             ),
                           );
                         },
