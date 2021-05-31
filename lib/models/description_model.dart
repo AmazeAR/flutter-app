@@ -1,5 +1,5 @@
 class Description {
-  final description;
+  final String description;
 
   Description({required this.description});
 

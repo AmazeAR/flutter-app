@@ -11,11 +11,9 @@ class HttpDescriptionServices {
       print("decription of perticular product is successfully fetched!");
 
       var body = json.decode(res.body);
-      var descriptionJson = body['description'];
-      
-      Description description = Description.fromJson(descriptionJson);
-      return description;
 
+      Description description = Description.fromJson(body);
+      return description;
     } else {
       throw Exception(
           "Failed to fetch product from products/product/product_id");

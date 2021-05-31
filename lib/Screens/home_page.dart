@@ -19,9 +19,11 @@ class HomePage extends StatelessWidget {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (snapshot.hasData) {
+          }
+           else if (snapshot.hasData) {
             return CategoriesPage();
-          } else {
+          }
+           else {
             return SignInPage(
               buttonText: "SignIn With Google",
               onPress: () async {

@@ -30,8 +30,7 @@ class _DescriptionWidgetState extends State<DescriptionWidget> {
       builder: (BuildContext context, AsyncSnapshot<Description> snapshot) {
         if (snapshot.hasData) {
           Description description = snapshot.data!;
-          print(description);
-          return Text("description get loaded!");
+          return Text(description.description);
         } else if (snapshot.hasError) {
           return Center(
             child: Text('${snapshot.error}'),
