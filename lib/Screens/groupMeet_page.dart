@@ -101,7 +101,7 @@ class _MeetingPageState extends State<MeetingPage> {
             child: ElevatedButton(
               onPressed: () {
                 meetServices.joinMeeting(
-                    meetName: (meetingName.replaceAll(" ", '_')));
+                    meetName: (meetingName.replaceAll(" ", '')));
                 Navigator.pop(context);
               },
               child: Text(
