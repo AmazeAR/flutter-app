@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
-import 'package:flutter_amaze_ar/Screens/groupChat_page.dart';
 import 'package:flutter_amaze_ar/Screens/cart_page.dart';
-import 'package:flutter_amaze_ar/Screens/signin_page.dart';
+import 'package:flutter_amaze_ar/Screens/groupMeet_page.dart';
 import 'package:flutter_amaze_ar/Screens/user_profile_page.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:provider/provider.dart';
@@ -65,9 +64,8 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                         },
                       ),
                     ),
-                    Spacer(),
                     Expanded(
-                      flex: 3,
+                      flex: 2,
                       child: Text(
                         "AmazAR",
                         style: TextStyle(
@@ -77,26 +75,13 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                       ),
                     ),
                     Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (BuildContext context) => SignInPage(
-                                buttonText: "Create Group",
-                                onPress: () {
-                                  // create group button get pressed
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          GroupChat(),
-                                    ),
-                                  );
-                                },
-                                isSignInPage: false,
-                              ),
+                              builder: (BuildContext context) => MeetingPage(),
                             ),
                           );
                         },
@@ -108,15 +93,14 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                       ),
                     ),
                     Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: IconButton(
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) => Cart(
-                                id: user.userId,isPersonalCartPage: true
-                              ),
+                                  id: user.userId, isPersonalCartPage: true),
                             ),
                           );
                         },
@@ -126,7 +110,27 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                           size: 30.0,
                         ),
                       ),
-                    )
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => Cart(
+                                  id: UserModel.getGroupId(),
+                                  isPersonalCartPage: false),
+                            ),
+                          );
+                        },
+                        icon: Icon(
+                          Icons.local_mall,
+                          color: Colors.white,
+                          size: 30.0,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

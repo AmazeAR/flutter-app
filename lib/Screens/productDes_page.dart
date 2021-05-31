@@ -133,7 +133,7 @@ class ProductDescriptionPage extends StatelessWidget {
                     HttpCartServices personalCartServices =
                         HttpCartServices();
                     await personalCartServices.addToCart(
-                        id: "123", productId: productId, isPersonalCart: false);
+                        id: UserModel.getGroupId(), productId: productId, isPersonalCart: false);
                   },
                   label: Text("Group Cart"),
                   icon: Icon(Icons.add_shopping_cart_outlined),

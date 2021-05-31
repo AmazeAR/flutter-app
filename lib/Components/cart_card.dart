@@ -14,7 +14,7 @@ class PersonalCartCard extends StatelessWidget {
   final bool is3DModel;
   final bool isPersonalCartCard;
 
-  const PersonalCartCard(
+  PersonalCartCard(
       {Key? key,
       required this.prodId,
       required this.catId,
@@ -27,20 +27,31 @@ class PersonalCartCard extends StatelessWidget {
       required this.isPersonalCartCard})
       : super(key: key);
 
+  final HttpCartServices cartServices = HttpCartServices();
+
   String getId() {
-    if (isPersonalCartCard) {  // add to group cart
+    // for deleting
+    if (isPersonalCartCard) {
+      return UserModel.getUserId();
+    } else {
       return UserModel.getGroupId();
     }
-    else{
-      return UserModel.getUserId();  // add to personal cart
+  }
+
+  String getOppositeId() {
+    if (isPersonalCartCard) {
+      // add to group cart
+      return UserModel.getGroupId();
+    } else {
+      return UserModel.getUserId(); // add to personal cart
     }
   }
 
   void addToOppositeCart() async {
-    HttpCartServices cartServices = HttpCartServices();
-
     await cartServices.addToCart(
-        id: getId(), productId: prodId, isPersonalCart: !isPersonalCartCard);
+        id: getOppositeId(),
+        productId: prodId,
+        isPersonalCart: !isPersonalCartCard);
   }
 
   @override
@@ -103,7 +114,12 @@ class PersonalCartCard extends StatelessWidget {
                 child: Column(
                   children: [
                     TextButton.icon(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await cartServices.deleteFromCart(
+                            isPersonalCart: isPersonalCartCard,
+                            id: getId(),
+                            productId: prodId);
+                      },
                       label: Text(""),
                       icon: Icon(
                         Icons.highlight_remove_rounded,
