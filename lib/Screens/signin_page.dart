@@ -3,7 +3,6 @@ import 'package:flutter_amaze_ar/Components/google_signin_button.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
 
 class SignInPage extends StatelessWidget {
-  final meetingName = TextEditingController();
   final String buttonText;
   final void Function() onPress;
 
