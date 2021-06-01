@@ -56,7 +56,8 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                                       Provider.of<GoogleSignInProvider>(context,
                                           listen: false);
                                   provider.logout();
-                                  Navigator.pop(context);
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context, '/signin', (route) => false);
                                 },
                               );
                             },
