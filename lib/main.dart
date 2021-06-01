@@ -21,7 +21,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'AmazAR',
         theme: ThemeData.light().copyWith(),
-        home: HomePage(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => HomePage(),
+        },
       ),
     );
   }

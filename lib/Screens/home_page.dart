@@ -20,8 +20,10 @@ class HomePage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasData) {
+            print("rendering category page");
             return CategoriesPage();
           } else {
+            print("rendering sign in page");
             return SignInPage();
           }
         },

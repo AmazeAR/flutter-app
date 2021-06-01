@@ -57,7 +57,8 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                                       Provider.of<GoogleSignInProvider>(context,
                                           listen: false);
                                   provider.logout();
-                                  Navigator.pop(context);
+                                  Navigator.popUntil(
+                                      context, ModalRoute.withName('/'));
                                 },
                               );
                             },
