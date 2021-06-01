@@ -26,5 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
- 
-// colors 005662  5669EC  2c50e2 #0093a8
