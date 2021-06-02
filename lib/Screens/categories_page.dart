@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
 import 'package:flutter_amaze_ar/Components/category_item.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
-import 'package:flutter_amaze_ar/Screens/products_page.dart';
 import 'package:flutter_amaze_ar/services/categories_services.dart';
 import 'package:flutter_amaze_ar/models/category_model.dart';
 

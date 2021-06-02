@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
 import 'package:flutter_amaze_ar/Components/product_item.dart';
+import 'package:flutter_amaze_ar/Constants/constants.dart';
 import 'package:flutter_amaze_ar/models/product_model.dart';
 import 'package:flutter_amaze_ar/services/products_services.dart';
 
@@ -28,7 +29,7 @@ class _ProductsPageState extends State<ProductsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
+        preferredSize: Size.fromHeight(kAppBarSize),
         child: AppBarWithProfileIcon(),
       ),
       body: Container(

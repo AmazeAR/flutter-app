@@ -63,7 +63,7 @@ class ProductCard extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18.0),
+                    fontSize: 12.0),
               ),
             ),
             SizedBox(
