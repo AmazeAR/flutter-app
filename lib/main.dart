@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'Screens/home_page.dart';
@@ -20,7 +21,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'AmazAR',
-        theme: ThemeData.light().copyWith(),
+        theme: ThemeData.light().copyWith(
+          primaryColor: kPrimaryColor,
+          // scaffoldBackgroundColor: Color(0xFFeeeeee),
+          // secondaryHeaderColor: kSecondaryColor,
+        ),
         initialRoute: '/',
         routes: {
           '/': (context) => HomePage(),

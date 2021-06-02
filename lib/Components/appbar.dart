@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:flutter_amaze_ar/Screens/cart_page.dart';
 import 'package:flutter_amaze_ar/Screens/groupMeet_page.dart';
-import 'package:flutter_amaze_ar/Screens/user_profile_page.dart';
+import 'package:flutter_amaze_ar/Screens/profile_page.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +30,7 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
           if (snapshot.hasData) {
             UserModel user = snapshot.data!;
             return AppBar(
-              backgroundColor: Color(0xFF149cb1),
+              backgroundColor: kSecondaryColor,
               elevation: 6.0,
               leadingWidth: 30.0,
               title: Padding(

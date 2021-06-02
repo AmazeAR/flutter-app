@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Constants/Colors.dart';
 
 class GoogleSigninButton extends StatelessWidget {
   final String buttonText;
@@ -11,7 +12,7 @@ class GoogleSigninButton extends StatelessWidget {
     return TextButton(
       style: ButtonStyle(
         backgroundColor:
-            MaterialStateColor.resolveWith((states) => Color(0xFF09759f)),
+            MaterialStateColor.resolveWith((states) => kSecondaryColor),
         elevation: MaterialStateProperty.resolveWith((states) => 6.0),
       ),
       onPressed: onPress,

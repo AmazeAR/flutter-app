@@ -31,7 +31,7 @@ class UserProfile extends StatelessWidget {
             child: Text(
               user.fullName,
               style: TextStyle(
-                  color: primaryColor,
+                  color: kPrimaryColor,
                   fontSize: 36,
                   fontWeight: FontWeight.bold),
             ),
@@ -63,7 +63,7 @@ class UserProfile extends StatelessWidget {
                 ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith(
-                    (states) => primaryColor,
+                    (states) => kPrimaryColor,
                   ),
                 ),
               ),

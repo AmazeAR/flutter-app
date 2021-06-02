@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Constants/Colors.dart';
 
 const kServerUrl = "https://amazar-v1.herokuapp.com/";
 
@@ -17,7 +18,7 @@ const kBoxDecorationOfSigninPage = BoxDecoration(
 const kLabelTextStyleOfSigninPage = TextStyle(
   fontSize: 20.0,
   fontWeight: FontWeight.bold,
-  color: Colors.black,
+  color: kThiredColor,
 );
 
 const kTitleTextStyleOfSigninPage = TextStyle(

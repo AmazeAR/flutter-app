@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Screens/products_page.dart';
 import 'package:flutter_amaze_ar/models/category_model.dart';
 
@@ -22,7 +23,7 @@ class CategoryItem extends StatelessWidget {
       title: Container(
         height: 120,
         decoration: BoxDecoration(
-          color: Colors.grey,
+          color: Colors.grey.shade400,
           image: DecorationImage(
             image: NetworkImage(category.categoryURL),
             colorFilter: ColorFilter.mode(

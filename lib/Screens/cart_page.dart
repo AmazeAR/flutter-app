@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/cart_item.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
+import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/models/product_model.dart';
 import 'package:flutter_amaze_ar/services/cart_services.dart';
 
@@ -47,7 +48,7 @@ class _CartState extends State<Cart> {
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.red,
+                    color: Colors.blueGrey,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -88,7 +89,7 @@ class _CartState extends State<Cart> {
                       elevation:
                           MaterialStateProperty.resolveWith((states) => 6.0),
                       backgroundColor: MaterialStateProperty.resolveWith(
-                          (states) => Colors.blueAccent)),
+                          (states) => kPrimaryColor)),
                   child: Text(
                     "Cart is empty. Let's shop!",
                     style: TextStyle(
