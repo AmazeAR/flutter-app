@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
@@ -11,35 +12,61 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.network(user.profileURL),
-          Text(
-            user.fullName,
-            style: TextStyle(
-                color: primaryColor, fontSize: 36, fontWeight: FontWeight.bold),
-          ),
-          Text(
-            "signed in as ${user.emailId}",
-            style: TextStyle(
-              fontSize: 15.0,
-              fontWeight: FontWeight.bold,
+          Expanded(
+              flex: 2,
+              child: Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    fit: BoxFit.fitWidth,
+                    image: NetworkImage(user.profileURL),
+                  ),
+                ),
+              )),
+          Expanded(
+            child: Text(
+              user.fullName,
+              style: TextStyle(
+                  color: primaryColor,
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold),
             ),
           ),
-          TextButton(
-            onPressed: onSignOut,
+          Expanded(
             child: Text(
-              "Sign out",
+              "signed in as ${user.emailId}",
               style: TextStyle(
-                color: Colors.white,
                 fontSize: 15.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith(
-                (states) => primaryColor,
+          ),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 12),
+              child: TextButton(
+                onPressed: onSignOut,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Sign out",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith(
+                    (states) => primaryColor,
+                  ),
+                ),
               ),
             ),
           )
