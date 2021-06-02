@@ -8,50 +8,57 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            flex: 1,
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "AmazAR",
-                    style: kTitleTextStyleOfSigninPage,
-                  ),
-                  Text(
-                    "Visualize Better Together!",
-                    style: kLabelTextStyleOfSigninPage,
-                  ),
-                ],
-              ),
-            ),
+      backgroundColor: Color(0xFF149cb1),
+      body: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Color(0xFF149cb1), Color(0xFFffffff)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight),
           ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GoogleSigninButton(
-                    buttonText: "SignIn With Google",
-                    onPress: () async {
-                      final GoogleSignInProvider provider =
-                          Provider.of<GoogleSignInProvider>(context,
-                              listen: false);
-                      await provider.login();
-                    },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "AmazAR",
+                        style: kTitleTextStyleOfSigninPage,
+                      ),
+                      Text(
+                        "Visualize Better Together!",
+                        style: kLabelTextStyleOfSigninPage,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-              decoration: kBoxDecorationOfSigninPage,
-            ),
-          )
-        ],
+              Expanded(
+                flex: 3,
+                child: Container(
+                  child: Center(
+                    child: GoogleSigninButton(
+                      buttonText: "SignIn with Google",
+                      onPress: () async {
+                        final GoogleSignInProvider provider =
+                            Provider.of<GoogleSignInProvider>(context,
+                                listen: false);
+                        await provider.login();
+                      },
+                    ),
+                  ),
+                  decoration: kBoxDecorationOfSigninPage,
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -11,7 +11,7 @@ class GoogleSigninButton extends StatelessWidget {
     return TextButton(
       style: ButtonStyle(
         backgroundColor:
-            MaterialStateColor.resolveWith((states) => Colors.blue),
+            MaterialStateColor.resolveWith((states) => Color(0xFF09759f)),
         elevation: MaterialStateProperty.resolveWith((states) => 6.0),
       ),
       onPressed: onPress,
