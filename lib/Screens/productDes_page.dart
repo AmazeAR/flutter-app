@@ -114,10 +114,16 @@ class ProductDescriptionPage extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () async {
                     HttpCartServices personalCartServices = HttpCartServices();
-                    await personalCartServices.addToCart(
+                    String message = await personalCartServices.addToCart(
                         id: UserModel.getUserId(),
                         productId: productId,
                         isPersonalCart: true);
+                    final snackBar = SnackBar(
+                        content: Text(
+                      message,
+                      textAlign: TextAlign.center,
+                    ));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   label: Text(
                     "Personal Cart",
@@ -138,10 +144,16 @@ class ProductDescriptionPage extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () async {
                     HttpCartServices personalCartServices = HttpCartServices();
-                    await personalCartServices.addToCart(
+                    String message = await personalCartServices.addToCart(
                         id: UserModel.getGroupId(),
                         productId: productId,
                         isPersonalCart: false);
+                    final snackBar = SnackBar(
+                        content: Text(
+                      message,
+                      textAlign: TextAlign.center,
+                    ));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   label: Text(
                     "Group Cart",

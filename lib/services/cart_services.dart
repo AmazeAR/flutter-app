@@ -31,7 +31,7 @@ class HttpCartServices {
     }
   }
 
-  Future<void> addToCart(
+  Future<String> addToCart(
       {required String id,
       required String productId,
       required bool isPersonalCart}) async {
@@ -52,7 +52,7 @@ class HttpCartServices {
       print("request to add to $cartName successfully executed!");
       var data = jsonDecode(res.body)["data"];
       print(data);
-      return;
+      return 'Successfully added to $cartName';
     } else {
       throw Exception("Failed to add product to $cartName!");
     }
