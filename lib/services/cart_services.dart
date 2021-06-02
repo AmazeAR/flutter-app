@@ -16,7 +16,7 @@ class HttpCartServices {
       var body = json.decode(res.body);
       var cartJson = body['data'];
 
-      if (cartJson == null) {
+      if (cartJson == null || cartJson.length == 0) {
         print("empty $cartName");
         throw Exception("Your $cartName cart is empty!");
       } else {
@@ -58,7 +58,7 @@ class HttpCartServices {
     }
   }
 
-  Future<void> deleteFromCart(
+  Future<String> deleteFromCart(
     {required String id,
     required String productId,
     required bool isPersonalCart}) async {
@@ -77,7 +77,7 @@ class HttpCartServices {
       print("item get deleted from $cartName ");
       var data = jsonDecode(res.body)["data"];
       print(data);
-      return;
+      return "Removed from the $cartName";
     } else {
       throw Exception("Failed to delete item from $cartName");
     }

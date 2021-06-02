@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
+import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
 import 'package:flutter_amaze_ar/services/meet_services.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
@@ -111,7 +112,7 @@ class _MeetingPageState extends State<MeetingPage> {
               ),
               style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateColor.resolveWith((states) => Colors.blue)),
+                      MaterialStateColor.resolveWith((states) => kPrimaryColor)),
             ),
           ),
           SizedBox(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/cart_item.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
-import 'package:flutter_amaze_ar/Constants/Colors.dart';
+import 'package:flutter_amaze_ar/Components/empty_cart.dart';
 import 'package:flutter_amaze_ar/models/product_model.dart';
 import 'package:flutter_amaze_ar/services/cart_services.dart';
 
@@ -55,7 +55,7 @@ class _CartState extends State<Cart> {
               ),
               ...cart
                   .map(
-                    (ProductModel item) => PersonalCartCard(
+                    (ProductModel item) => CartCard(
                       prodId: item.productId,
                       catId: item.categoryId,
                       catName: item.categoryName,
@@ -72,35 +72,7 @@ class _CartState extends State<Cart> {
           } else if (snapshot.hasError) {
             // when cart is empty
             print("haserror ${snapshot.error}");
-            return Center(
-              child: Container(
-                height: 100.0,
-                width: 300.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Colors.blueAccent,
-                ),
-                child: TextButton(
-                  onPressed: () {
-                    // redirect to category page
-                    Navigator.pop(context);
-                  },
-                  style: ButtonStyle(
-                      elevation:
-                          MaterialStateProperty.resolveWith((states) => 6.0),
-                      backgroundColor: MaterialStateProperty.resolveWith(
-                          (states) => kPrimaryColor)),
-                  child: Text(
-                    "Cart is empty. Let's shop!",
-                    style: TextStyle(
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            );
+            return EmptyCart();
           }
           return Center(
             child: CircularProgressIndicator(),
@@ -110,3 +82,4 @@ class _CartState extends State<Cart> {
     );
   }
 }
+
