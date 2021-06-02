@@ -39,8 +39,20 @@ class _CartState extends State<Cart> {
             (BuildContext context, AsyncSnapshot<List<ProductModel>> snapshot) {
           if (snapshot.hasData) {
             List<ProductModel> cart = snapshot.data!;
-            return ListView(
-              children: cart
+            return ListView(children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  (widget.isPersonalCartPage) ? "Personal Cart" : "Group Cart",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              ...cart
                   .map(
                     (ProductModel item) => PersonalCartCard(
                       prodId: item.productId,
@@ -55,7 +67,7 @@ class _CartState extends State<Cart> {
                     ),
                   )
                   .toList(),
-            );
+            ]);
           } else if (snapshot.hasError) {
             // when cart is empty
             print("haserror ${snapshot.error}");
