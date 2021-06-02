@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Components/appbar_with_profile.dart';
+import 'package:flutter_amaze_ar/Components/appbar.dart';
+import 'package:flutter_amaze_ar/Constants/constants.dart';
 import 'package:flutter_amaze_ar/Screens/products_page.dart';
 import 'package:flutter_amaze_ar/services/categories_services.dart';
 import 'package:flutter_amaze_ar/models/category_model.dart';
@@ -24,7 +25,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
+        preferredSize: Size.fromHeight(kAppBarSize),
         child: AppBarWithProfileIcon(),
       ),
       body: FutureBuilder(
@@ -41,8 +42,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  ProductsPage(categoryName: category.categoryName),
+                              builder: (BuildContext context) => ProductsPage(
+                                  categoryName: category.categoryName),
                             ),
                           );
                         },

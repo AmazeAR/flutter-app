@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 const kServerUrl = "https://amazar-v1.herokuapp.com/";
 
+const double kAppBarSize = 70.0;
+
 const kBoxDecorationOfSigninPage = BoxDecoration(
   borderRadius: BorderRadius.only(
     topLeft: Radius.circular(20.0),

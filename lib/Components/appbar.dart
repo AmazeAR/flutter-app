@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:flutter_amaze_ar/Screens/cart_page.dart';
 import 'package:flutter_amaze_ar/Screens/groupMeet_page.dart';
-import 'package:flutter_amaze_ar/Screens/signin_page.dart';
 import 'package:flutter_amaze_ar/Screens/user_profile_page.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:provider/provider.dart';
@@ -30,8 +29,9 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
           if (snapshot.hasData) {
             UserModel user = snapshot.data!;
             return AppBar(
-              backgroundColor: Colors.lightBlueAccent,
+              backgroundColor: Color(0xFF149cb1),
               elevation: 6.0,
+              leadingWidth: 30.0,
               title: Padding(
                 padding: const EdgeInsets.only(top: 15.0),
                 child: Row(
@@ -74,6 +74,7 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold,
                         ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Expanded(
@@ -88,9 +89,9 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                           );
                         },
                         child: Icon(
-                          Icons.message,
+                          Icons.video_call,
                           color: Colors.white,
-                          size: 30.0,
+                          size: 35.0,
                         ),
                       ),
                     ),

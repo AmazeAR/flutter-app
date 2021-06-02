@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Components/appbar_with_profile.dart';
-import 'package:flutter_amaze_ar/Components/product_card.dart';
+import 'package:flutter_amaze_ar/Components/appbar.dart';
+import 'package:flutter_amaze_ar/Components/product_item.dart';
 import 'package:flutter_amaze_ar/models/product_model.dart';
 import 'package:flutter_amaze_ar/services/products_services.dart';
 
