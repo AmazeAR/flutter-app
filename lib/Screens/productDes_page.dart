@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
 import 'package:flutter_amaze_ar/Components/descrption_widget.dart';
+import 'package:flutter_amaze_ar/Constants/constants.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:flutter_amaze_ar/services/cart_services.dart';
 
@@ -31,7 +32,7 @@ class ProductDescriptionPage extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
+        preferredSize: Size.fromHeight(kAppBarSize),
         child: AppBarWithProfileIcon(),
       ),
       body: Container(
@@ -39,7 +40,6 @@ class ProductDescriptionPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Card(
-              // color: Colors.amber,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -48,53 +48,57 @@ class ProductDescriptionPage extends StatelessWidget {
                     height: size.height * 0.4,
                     width: size.width * 0.9,
                   ),
-                  SizedBox(
-                    height: size.height * 0.04,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(
-                        width: 250.0,
-                        child: Text(
-                          productName,
-                          maxLines: 1,
-                          overflow: TextOverflow.visible,
-                          softWrap: false,
-                          style: TextStyle(
-                              color: Colors.black,
-                              // fontWeight: FontWeight.bold,
-                              fontSize: 20.0),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 12, 0),
-                        child: Text(
-                          price,
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue),
-                        ),
-                      ),
-                    ],
-                  ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 12, 0, 0),
-                    child: Text(
-                      brandName,
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            brandName,
+                            style: TextStyle(
+                              fontSize: 30.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            price,
+                            style: TextStyle(
+                              fontSize: 25.0,
+                              color: Colors.blue,
+                            ),
+                            textAlign: TextAlign.end,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  SizedBox(
-                    height: size.height * 0.05,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15.0, vertical: 10.0),
+                    child: Text(
+                      productName,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey.shade900,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                  DescriptionWidget(productId: productId),
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: DescriptionWidget(productId: productId),
+            ),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                // directed to 3d view of item
+              },
               label: Text("View in 3D"),
               icon: Icon(Icons.ac_unit),
               style: ButtonStyle(
@@ -109,18 +113,22 @@ class ProductDescriptionPage extends StatelessWidget {
               children: [
                 ElevatedButton.icon(
                   onPressed: () async {
-                    HttpCartServices personalCartServices =
-                        HttpCartServices();
+                    HttpCartServices personalCartServices = HttpCartServices();
                     await personalCartServices.addToCart(
                         id: UserModel.getUserId(),
                         productId: productId,
                         isPersonalCart: true);
                   },
-                  label: Text("Personal Cart"),
+                  label: Text(
+                    "Personal Cart",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
                   icon: Icon(Icons.add_shopping_cart_outlined),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith(
-                        (states) => Colors.amber),
+                        (states) => Colors.yellow.shade700),
                     foregroundColor: MaterialStateProperty.resolveWith(
                         (states) => Colors.black),
                     overlayColor: MaterialStateProperty.resolveWith(
@@ -129,17 +137,22 @@ class ProductDescriptionPage extends StatelessWidget {
                 ),
                 ElevatedButton.icon(
                   onPressed: () async {
-                    //TODO should be diabled when there is no group
-                    HttpCartServices personalCartServices =
-                        HttpCartServices();
+                    HttpCartServices personalCartServices = HttpCartServices();
                     await personalCartServices.addToCart(
-                        id: UserModel.getGroupId(), productId: productId, isPersonalCart: false);
+                        id: UserModel.getGroupId(),
+                        productId: productId,
+                        isPersonalCart: false);
                   },
-                  label: Text("Group Cart"),
+                  label: Text(
+                    "Group Cart",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
                   icon: Icon(Icons.add_shopping_cart_outlined),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith(
-                        (states) => Colors.amber),
+                        (states) => Colors.yellow.shade600),
                     foregroundColor: MaterialStateProperty.resolveWith(
                         (states) => Colors.black),
                     overlayColor: MaterialStateProperty.resolveWith(
