@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Screens/products_page.dart';
 import 'package:flutter_amaze_ar/models/category_model.dart';
 

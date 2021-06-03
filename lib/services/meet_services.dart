@@ -25,6 +25,7 @@ class MeetServices {
     Map<FeatureFlagEnum, bool> featureFlags = {
       FeatureFlagEnum.WELCOME_PAGE_ENABLED: false,
       FeatureFlagEnum.MEETING_PASSWORD_ENABLED: true,
+      FeatureFlagEnum.PIP_ENABLED: true,
     };
     if (!kIsWeb) {
       // Here is an example, disabling features for each platform

@@ -104,7 +104,7 @@ class _MeetingPageState extends State<MeetingPage> {
               onPressed: () {
                 meetServices.joinMeeting(
                     meetName: (meetingName.trim().replaceAll(" ", '')));
-                Navigator.pop(context);
+                // Navigator.pop(context);
               },
               child: Text(
                 "Join Meeting",
