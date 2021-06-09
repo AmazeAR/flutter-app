@@ -18,7 +18,7 @@ class HttpCartServices {
       var cartJson = body['data'];
 
       if (cartJson == null || cartJson.length == 0) {
-        throw Exception("Your $cartName cart is empty!");
+        throw Exception("Your $cartName is empty!");
       } else {
         List<dynamic> cartJsonList = cartJson;
         List<ProductModel> cart = cartJsonList
@@ -78,8 +78,10 @@ class HttpCartServices {
   }
 
   Future<String> addNewShoppingGroup(
-      {required String userId, required String groupId}) async {
-    final String url = '/users/groupCart/$userId/$groupId';
+      {required String userId,
+      required String groupId,
+      required String groupName}) async {
+    final String url = '/users/groupCart/$userId/$groupName/$groupId';
 
     http.Response res = await http.post(
       Uri.https('amazar-v1.herokuapp.com', url),
@@ -92,9 +94,9 @@ class HttpCartServices {
       print("new shopping group get added");
       var data = jsonDecode(res.body)["data"];
       print(data);
-      return "new shoppingGroup: $groupId get added";
+      return "new shoppingGroup: $groupName get added";
     } else {
-      throw Exception("Failed to add new shoppingGroup: $groupId");
+      throw Exception("Failed to add new shoppingGroup: $groupName");
     }
   }
 
@@ -109,12 +111,34 @@ class HttpCartServices {
       print("shopping groups list fetched");
       var body = jsonDecode(res.body);
       List<dynamic> shoppingGroupsJson = body['data'];
-      List<ShoppingGroup> shoppingGroups = shoppingGroupsJson
-          .map((dynamic shoppingGroup) => ShoppingGroup.fromJson(shoppingGroup))
-          .toList();
-      return shoppingGroups;
+      if (shoppingGroupsJson.length == 0) {
+        print("no shopping grps");
+        throw Exception("There are no shopping groups yet!");
+      } else {
+        List<ShoppingGroup> shoppingGroups = shoppingGroupsJson
+            .map((dynamic shoppingGroup) =>
+                ShoppingGroup.fromJson(shoppingGroup))
+            .toList();
+
+        return shoppingGroups;
+      }
     } else {
       throw Exception("Failed to fetch all shopping groups!");
+    }
+  }
+
+  Future<String> removeShoppingGroup(
+      {required String userId, required String groupId}) async {
+    final String url = '/users/groupCart/$userId/$groupId';
+
+    http.Response res =
+        await http.delete(Uri.https('amazar-v1.herokuapp.com', url));
+
+    if (res.statusCode == 200) {
+      print("shopping group removed");
+      return "$groupId successfully removed!";
+    } else {
+      throw Exception("Failed to remove $groupId!");
     }
   }
 }

@@ -8,8 +8,9 @@ import 'package:flutter_amaze_ar/services/cart_services.dart';
 class Cart extends StatefulWidget {
   final String id;
   final bool isPersonalCartPage;
+  final String cartLabel;
 
-  const Cart({required this.id, required this.isPersonalCartPage});
+  const Cart({required this.id, required this.isPersonalCartPage,required this.cartLabel});
 
   @override
   _CartState createState() => _CartState();
@@ -44,18 +45,20 @@ class _CartState extends State<Cart> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  (widget.isPersonalCartPage) ? "Personal Cart" : "Group Cart",
+                  widget.cartLabel,
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Colors.blueGrey,
                   ),
                   textAlign: TextAlign.center,
+                  overflow: TextOverflow.fade,
                 ),
               ),
               ...cart
                   .map(
                     (ProductModel item) => CartCard(
+                      id: widget.id,
                       prodId: item.productId,
                       catId: item.categoryId,
                       catName: item.categoryName,
@@ -72,7 +75,10 @@ class _CartState extends State<Cart> {
           } else if (snapshot.hasError) {
             // when cart is empty
             print("haserror ${snapshot.error}");
-            return EmptyCart();
+            return EmptyCart(
+              isCartPage: true,
+              buttonLabel: "Empty Cart. Let's shop!",
+            );
           }
           return Center(
             child: CircularProgressIndicator(),
@@ -82,4 +88,3 @@ class _CartState extends State<Cart> {
     );
   }
 }
-

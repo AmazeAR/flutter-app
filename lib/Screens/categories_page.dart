@@ -20,6 +20,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
   void initState() {
     super.initState();
     categoriesList = categoriesServices.getCategories();
+    print(categoriesList);
   }
 
   @override

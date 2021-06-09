@@ -112,7 +112,7 @@ class _MeetingPageState extends State<MeetingPage> {
 
                 // add new shopping group in users shopping group list
                 String message = await httpCartServices.addNewShoppingGroup(
-                    userId: UserModel.getUserId(), groupId: editedMeetingName);
+                    userId: UserModel.getUserId(), groupId: editedMeetingName, groupName: meetingName,);
                 print(message);
                 // pop everything out from stack and push main page which is category page at this stage
                 Navigator.popUntil(context, ModalRoute.withName('/'));

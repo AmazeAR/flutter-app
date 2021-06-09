@@ -4,6 +4,7 @@ import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:flutter_amaze_ar/Screens/cart_page.dart';
 import 'package:flutter_amaze_ar/Screens/groupMeet_page.dart';
 import 'package:flutter_amaze_ar/Screens/profile_page.dart';
+import 'package:flutter_amaze_ar/Screens/shoppingGroups_page.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:provider/provider.dart';
 
@@ -104,7 +105,10 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) => Cart(
-                                  id: user.userId, isPersonalCartPage: true),
+                                id: user.userId,
+                                isPersonalCartPage: true,
+                                cartLabel: "Personal Cart",
+                              ),
                             ),
                           );
                         },
@@ -122,10 +126,8 @@ class _AppBarWithProfileIconState extends State<AppBarWithProfileIcon> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (BuildContext context) => Cart(
-                                  id: UserModel.getGroupId(),
-                                  isPersonalCartPage: false),
-                            ),
+                                builder: (BuildContext context) =>
+                                    ShoppingGroups()),
                           );
                         },
                         icon: Icon(

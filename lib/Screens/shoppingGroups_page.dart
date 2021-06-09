@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
+import 'package:flutter_amaze_ar/Components/empty_cart.dart';
 import 'package:flutter_amaze_ar/Components/shoppingGrp_item.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:flutter_amaze_ar/services/cart_services.dart';
 
 class ShoppingGroups extends StatefulWidget {
-  final String userId = UserModel.getUserId();
   @override
   _ShoppingGroupsState createState() => _ShoppingGroupsState();
 }
@@ -21,8 +21,9 @@ class _ShoppingGroupsState extends State<ShoppingGroups> {
   @override
   void initState() {
     super.initState();
+    final String userId = UserModel.getUserId();
     shoppingGroupsFuture =
-        httpCartServices.getAllShoppingGroups(userId: widget.userId);
+        httpCartServices.getAllShoppingGroups(userId: userId);
   }
 
   @override
@@ -39,16 +40,20 @@ class _ShoppingGroupsState extends State<ShoppingGroups> {
             AsyncSnapshot<List<ShoppingGroup>> snapshot) {
           if (snapshot.hasData) {
             List<ShoppingGroup> shoppingGroups = snapshot.data!;
-            return ListView(
-              padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
+
+            return GridView.count(
+              padding: EdgeInsets.all(10),
+              crossAxisCount: 1,
               children: shoppingGroups
                   .map((ShoppingGroup shoppingGroup) =>
                       ShoppingGroupItem(group: shoppingGroup))
                   .toList(),
             );
           } else if (snapshot.hasError) {
-            return Center(
-              child: Text('${snapshot.error}'),
+            print(snapshot.error);
+            return EmptyCart(
+              isCartPage: false,
+              buttonLabel: "No Shopping Groups yet. let's shop together",
             );
           }
           return Center(

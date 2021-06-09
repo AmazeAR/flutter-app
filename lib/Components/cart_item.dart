@@ -4,6 +4,7 @@ import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:flutter_amaze_ar/services/cart_services.dart';
 
 class CartCard extends StatelessWidget {
+  final String id;
   final String prodId;
   final String catId;
   final String catName;
@@ -13,9 +14,11 @@ class CartCard extends StatelessWidget {
   final String price;
   final bool is3DModel;
   final bool isPersonalCartCard;
+  
 
   CartCard(
       {Key? key,
+      required this.id,
       required this.prodId,
       required this.catId,
       required this.catName,
@@ -30,15 +33,6 @@ class CartCard extends StatelessWidget {
   final HttpCartServices cartServices = HttpCartServices();
   final userId = UserModel.getUserId();
   final groupId = UserModel.getGroupId();
-
-  String getId() {
-    // for deleting
-    if (isPersonalCartCard) {
-      return userId;
-    } else {
-      return groupId;
-    }
-  }
 
   String getOppositeId() {
     if (isPersonalCartCard) {
@@ -106,7 +100,7 @@ class CartCard extends StatelessWidget {
                         onPressed: () async {
                           String message = await cartServices.deleteFromCart(
                               isPersonalCart: isPersonalCartCard,
-                              id: getId(),
+                              id: id,
                               productId: prodId);
                           final snackBar = SnackBar(
                               content: Text(
