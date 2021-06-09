@@ -24,8 +24,7 @@ class _MeetingPageState extends State<MeetingPage> {
           onConferenceWillJoin: meetServices.onConferenceWillJoin,
           onConferenceJoined: meetServices.onConferenceJoined,
           onConferenceTerminated: meetServices.onConferenceTerminated,
-          onError: meetServices.onError
-          ),
+          onError: meetServices.onError),
     );
   }
 
@@ -104,15 +103,17 @@ class _MeetingPageState extends State<MeetingPage> {
               onPressed: () {
                 meetServices.joinMeeting(
                     meetName: (meetingName.trim().replaceAll(" ", '')));
-                // Navigator.pop(context);
+                
+                // pop everything out from stack and push main page which is category page at this stage
+                Navigator.popUntil(context, ModalRoute.withName('/'));
               },
               child: Text(
                 "Join Meeting",
                 style: TextStyle(color: Colors.white),
               ),
               style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateColor.resolveWith((states) => kPrimaryColor)),
+                  backgroundColor: MaterialStateColor.resolveWith(
+                      (states) => kPrimaryColor)),
             ),
           ),
           SizedBox(

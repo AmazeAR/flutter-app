@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter/foundation.dart';
@@ -10,6 +11,8 @@ class MeetServices {
   String serverText = kServerUrl;
   UserModel user = UserModel.getUser();
   final iosAppBarRGBAColor = "#0080FF80"; //transparent blue
+
+  final LocalStorage storage = LocalStorage('amaz_ar');
 
   String getUid() {
     var uuid = Uuid();
@@ -62,16 +65,19 @@ class MeetServices {
       options,
       listener: JitsiMeetingListener(
           onConferenceWillJoin: (message) {
-            // debugPrint("${options.room} will join with message: $message");
+            // on conference will join
           },
           onConferenceJoined: (message) {
-            final LocalStorage storage = LocalStorage('amaz_ar');
+            // add the groupId for shopping cart to all members of meeting
             storage.setItem("groupId", meetName);
             print(storage.getItem("groupId"));
-            // debugPrint("${options.room} joined with message: $message");
           },
           onConferenceTerminated: (message) {
-            // debugPrint("${options.room} terminated with message: $message");
+            // todo: pop everything out from stack and push main page which is category page at this stage
+
+            // set shopping groupId back to same as userId for no active shopping groups
+            final userId = UserModel.getUserId();
+            storage.setItem("groupId", userId);
           },
           genericListeners: [
             JitsiGenericListener(

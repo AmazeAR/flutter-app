@@ -15,7 +15,10 @@ class ProductDescriptionPage extends StatelessWidget {
   final String price;
   final bool is3DModel;
 
-  const ProductDescriptionPage(
+  final userId = UserModel.getUserId();
+  final groupId = UserModel.getGroupId();
+
+  ProductDescriptionPage(
       {Key? key,
       required this.productId,
       required this.categoryId,
@@ -115,9 +118,7 @@ class ProductDescriptionPage extends StatelessWidget {
                   onPressed: () async {
                     HttpCartServices personalCartServices = HttpCartServices();
                     String message = await personalCartServices.addToCart(
-                        id: UserModel.getUserId(),
-                        productId: productId,
-                        isPersonalCart: true);
+                        id: userId, productId: productId, isPersonalCart: true);
                     final snackBar = SnackBar(
                         content: Text(
                       message,
@@ -143,17 +144,28 @@ class ProductDescriptionPage extends StatelessWidget {
                 ),
                 ElevatedButton.icon(
                   onPressed: () async {
-                    HttpCartServices personalCartServices = HttpCartServices();
-                    String message = await personalCartServices.addToCart(
-                        id: UserModel.getGroupId(),
-                        productId: productId,
-                        isPersonalCart: false);
-                    final snackBar = SnackBar(
-                        content: Text(
-                      message,
-                      textAlign: TextAlign.center,
-                    ));
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    print(groupId);
+                    if (userId == groupId) {
+                      final snackBar = SnackBar(
+                          content: Text(
+                        "There is no active shopping group!",
+                        textAlign: TextAlign.center,
+                      ));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    } else {
+                      HttpCartServices personalCartServices =
+                          HttpCartServices();
+                      String message = await personalCartServices.addToCart(
+                          id: groupId,
+                          productId: productId,
+                          isPersonalCart: false);
+                      final snackBar = SnackBar(
+                          content: Text(
+                        message,
+                        textAlign: TextAlign.center,
+                      ));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
                   },
                   label: Text(
                     "Group Cart",

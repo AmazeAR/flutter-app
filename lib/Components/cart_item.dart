@@ -28,22 +28,23 @@ class CartCard extends StatelessWidget {
       : super(key: key);
 
   final HttpCartServices cartServices = HttpCartServices();
+  final userId = UserModel.getUserId();
+  final groupId = UserModel.getGroupId();
 
   String getId() {
     // for deleting
     if (isPersonalCartCard) {
-      return UserModel.getUserId();
+      return userId;
     } else {
-      return UserModel.getGroupId();
+      return groupId;
     }
   }
 
   String getOppositeId() {
     if (isPersonalCartCard) {
-      // add to group cart
-      return UserModel.getGroupId();
+      return groupId; // add to group cart
     } else {
-      return UserModel.getUserId(); // add to personal cart
+      return userId; // add to personal cart
     }
   }
 
@@ -138,16 +139,28 @@ class CartCard extends StatelessWidget {
                       ),
                       ElevatedButton.icon(
                         onPressed: () async {
-                          String message = await cartServices.addToCart(
-                              id: getOppositeId(),
-                              productId: prodId,
-                              isPersonalCart: !isPersonalCartCard);
-                          final snackBar = SnackBar(
-                              content: Text(
-                            message,
-                            textAlign: TextAlign.center,
-                          ));
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          print(groupId);
+                          if (groupId == userId && isPersonalCartCard) {
+                            final snackBar = SnackBar(
+                                content: Text(
+                              "There is no active shopping group!",
+                              textAlign: TextAlign.center,
+                            ));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          } else {
+                            String message = await cartServices.addToCart(
+                                id: getOppositeId(),
+                                productId: prodId,
+                                isPersonalCart: !isPersonalCartCard);
+                            final snackBar = SnackBar(
+                                content: Text(
+                              message,
+                              textAlign: TextAlign.center,
+                            ));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
                         },
                         label: Text(
                           (isPersonalCartCard)

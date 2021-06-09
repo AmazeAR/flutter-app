@@ -4,7 +4,6 @@ import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:flutter_amaze_ar/services/user_services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:localstorage/localstorage.dart';
-import 'package:uuid/uuid.dart';
 
 class GoogleSignInProvider extends ChangeNotifier {
   GoogleSignInProvider();
@@ -50,8 +49,9 @@ class GoogleSignInProvider extends ChangeNotifier {
           profileURL: userCredential.user!.photoURL!);
 
       storage.setItem("user", userModel.toJson());
-      var uuid = Uuid();
-      storage.setItem("groupId", uuid.v4().toString());
+      
+      // initializing groupId same as user id for no meeting groups
+      storage.setItem("groupId", userModel.userId);
 
       print(storage.getItem("user"));
 
