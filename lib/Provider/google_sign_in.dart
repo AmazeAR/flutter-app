@@ -53,7 +53,7 @@ class GoogleSignInProvider extends ChangeNotifier {
       // initializing groupId same as user id for no meeting groups
       storage.setItem("groupId", userModel.userId);
 
-      print(storage.getItem("user"));
+      print(storage.getItem("user"));                               
 
       HttpUserServices httpUserServices = HttpUserServices();
       httpUserServices.postUser(userModel);

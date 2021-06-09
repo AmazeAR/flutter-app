@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
+import 'package:flutter_amaze_ar/models/user_model.dart';
+import 'package:flutter_amaze_ar/services/cart_services.dart';
 import 'package:flutter_amaze_ar/services/meet_services.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:flutter/cupertino.dart';
@@ -100,10 +102,18 @@ class _MeetingPageState extends State<MeetingPage> {
             height: 64.0,
             width: double.maxFinite,
             child: ElevatedButton(
-              onPressed: () {
-                meetServices.joinMeeting(
-                    meetName: (meetingName.trim().replaceAll(" ", '')));
-                
+              onPressed: () async {
+                final String editedMeetingName =
+                    meetingName.trim().replaceAll(" ", '');
+
+                await meetServices.joinMeeting(meetName: editedMeetingName);
+
+                HttpCartServices httpCartServices = HttpCartServices();
+
+                // add new shopping group in users shopping group list
+                String message = await httpCartServices.addNewShoppingGroup(
+                    userId: UserModel.getUserId(), groupId: editedMeetingName);
+                print(message);
                 // pop everything out from stack and push main page which is category page at this stage
                 Navigator.popUntil(context, ModalRoute.withName('/'));
               },
