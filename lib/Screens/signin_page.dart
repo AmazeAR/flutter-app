@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Components/google_signin_button.dart';
+import 'package:flutter_amaze_ar/Components/signin_btn.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
 import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';

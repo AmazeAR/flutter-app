@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
 import 'package:flutter_amaze_ar/Components/empty_cart.dart';
-import 'package:flutter_amaze_ar/Components/shoppingGrp_item.dart';
+import 'package:flutter_amaze_ar/Components/shopping_grp.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
 import 'package:flutter_amaze_ar/models/shoppingGroup_model.dart';

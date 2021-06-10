@@ -31,8 +31,34 @@ class ShoppingGroupItem extends StatelessWidget {
             );
           },
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.circle,
+                    color: (UserModel.getGroupId() == group.groupId)
+                        ? Colors.green
+                        : kSecondaryColor,
+                  ),
+                  SizedBox(
+                    width: 6.0,
+                  ),
+                  Text(
+                    (UserModel.getGroupId() == group.groupId)
+                        ? "Active group"
+                        : 'Inactive group',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      color: (UserModel.getGroupId() == group.groupId)
+                          ? Colors.green
+                          : kSecondaryColor,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  )
+                ],
+              ),
               Text(
                 group.groupName,
                 style: TextStyle(
