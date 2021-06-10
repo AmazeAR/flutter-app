@@ -11,17 +11,16 @@ class ProductCard extends StatelessWidget {
   final String price;
   final bool is3DModel;
 
-  const ProductCard(
-      {Key? key,
-      required this.productId,
-      required this.categoryId,
-      required this.categoryName,
-      required this.productName,
-      required this.brandName,
-      required this.productURL,
-      required this.price,
-      required this.is3DModel})
-      : super(key: key);
+  const ProductCard({
+    required this.productId,
+    required this.categoryId,
+    required this.categoryName,
+    required this.productName,
+    required this.brandName,
+    required this.productURL,
+    required this.price,
+    required this.is3DModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,18 +30,20 @@ class ProductCard extends StatelessWidget {
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
         onTap: () {
+          // push to productDes page
           Navigator.push(
             context,
             MaterialPageRoute(
               builder: (BuildContext context) => ProductDescriptionPage(
-                  productId: productId,
-                  categoryId: categoryId,
-                  categoryName: categoryName,
-                  productName: productName,
-                  brandName: brandName,
-                  productURL: productURL,
-                  price: price,
-                  is3DModel: is3DModel),
+                productId: productId,
+                categoryId: categoryId,
+                categoryName: categoryName,
+                productName: productName,
+                brandName: brandName,
+                productURL: productURL,
+                price: price,
+                is3DModel: is3DModel,
+              ),
             ),
           );
         },

@@ -3,12 +3,16 @@ class CategoryModel {
   final String categoryName;
   final String categoryURL;
 
-  CategoryModel({required this.categoryId, required this.categoryName, required this.categoryURL});
+  CategoryModel(
+      {required this.categoryId,
+      required this.categoryName,
+      required this.categoryURL});
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
     return CategoryModel(
-        categoryId: json['_id'] as String,
-        categoryName: json['categoryName'] as String,
-        categoryURL: json['categoryImage'] as String);
+      categoryId: json['_id'] as String,
+      categoryName: json['categoryName'] as String,
+      categoryURL: json['categoryImage'] as String,
+    );
   }
 }

@@ -8,16 +8,18 @@ class ProductModel {
   final String price;
   final bool is3DModel;
 
-  ProductModel(
-      {required this.productId,
-      required this.categoryId,
-      required this.categoryName,
-      required this.productName,
-      required this.brandName,
-      required this.productURL,
-      required this.price,
-      required this.is3DModel});
+  ProductModel({
+    required this.productId,
+    required this.categoryId,
+    required this.categoryName,
+    required this.productName,
+    required this.brandName,
+    required this.productURL,
+    required this.price,
+    required this.is3DModel,
+  });
 
+  // convert JSON to ProductModel Object
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
       productId: json['_id'] as String,

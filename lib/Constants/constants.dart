@@ -1,9 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Components/appbar.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 
-const kServerUrl = "https://amazar-v1.herokuapp.com/";
+const kServerUrl = "https://amazar-v1.herokuapp.com";
 
 const double kAppBarSize = 70.0;
 
@@ -33,6 +34,31 @@ const kTitleTextStyleOfSigninPage = TextStyle(
   color: Colors.white,
   fontSize: 60.0,
   fontWeight: FontWeight.bold,
+);
+
+const kAppBar = PreferredSize(
+  preferredSize: Size.fromHeight(kAppBarSize),
+  child: AppBarWithProfileIcon(),
+);
+
+const double kCategoryItemHeight = 120.0;
+
+kCategoryBoxDecoration({categoryURL}) {
+  return BoxDecoration(
+    color: Colors.grey.shade400,
+    image: DecorationImage(
+      image: NetworkImage(categoryURL),
+      colorFilter:
+          ColorFilter.mode(Colors.green.withOpacity(0.6), BlendMode.dstATop),
+      fit: BoxFit.cover,
+    ),
+    borderRadius: BorderRadius.circular(10.0),
+  );
+}
+
+const kCategoryNameTextStyle = TextStyle(
+  fontSize: 30,
+  color: Colors.black,
 );
 
 const kTextFieldInputDecoration = InputDecoration(

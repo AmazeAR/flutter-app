@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
 import 'package:flutter_amaze_ar/Components/descrption_widget.dart';
-import 'package:flutter_amaze_ar/Constants/constants.dart';
+import 'package:flutter_amaze_ar/Constants/Constants.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:flutter_amaze_ar/services/cart_services.dart';
 

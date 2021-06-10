@@ -9,6 +9,8 @@ import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:provider/provider.dart';
 
 class AppBarWithProfileIcon extends StatefulWidget {
+  const AppBarWithProfileIcon(); // const constructor
+
   @override
   _AppBarWithProfileIconState createState() => _AppBarWithProfileIconState();
 }

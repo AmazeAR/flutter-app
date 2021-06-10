@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_amaze_ar/Constants/constants.dart';
+import 'package:flutter_amaze_ar/Constants/Constants.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 

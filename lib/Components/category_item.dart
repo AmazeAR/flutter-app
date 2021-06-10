@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Constants/Constants.dart';
 import 'package:flutter_amaze_ar/Screens/products_page.dart';
 import 'package:flutter_amaze_ar/models/category_model.dart';
 
@@ -11,6 +12,7 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
+        // tap on category item
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -20,25 +22,14 @@ class CategoryItem extends StatelessWidget {
         );
       },
       title: Container(
-        height: 120,
-        decoration: BoxDecoration(
-          color: Colors.grey.shade400,
-          image: DecorationImage(
-            image: NetworkImage(category.categoryURL),
-            colorFilter: ColorFilter.mode(
-                Colors.green.withOpacity(0.6), BlendMode.dstATop),
-            fit: BoxFit.cover,
-          ),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
+        height: kCategoryItemHeight,
+        decoration: kCategoryBoxDecoration(categoryURL: category.categoryURL),
         child: Center(
-            child: Text(
-          category.categoryName,
-          style: TextStyle(
-            fontSize: 30,
-            color: Colors.black,
+          child: Text(
+            category.categoryName,
+            style: kCategoryNameTextStyle,
           ),
-        )),
+        ),
       ),
     );
   }
