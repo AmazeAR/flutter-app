@@ -14,21 +14,19 @@ class CartCard extends StatelessWidget {
   final String price;
   final bool is3DModel;
   final bool isPersonalCartCard;
-  
 
-  CartCard(
-      {Key? key,
-      required this.id,
-      required this.prodId,
-      required this.catId,
-      required this.catName,
-      required this.proName,
-      required this.brandName,
-      required this.proImage,
-      required this.price,
-      required this.is3DModel,
-      required this.isPersonalCartCard})
-      : super(key: key);
+  CartCard({
+    required this.id,
+    required this.prodId,
+    required this.catId,
+    required this.catName,
+    required this.proName,
+    required this.brandName,
+    required this.proImage,
+    required this.price,
+    required this.is3DModel,
+    required this.isPersonalCartCard,
+  });
 
   final HttpCartServices cartServices = HttpCartServices();
   final userId = UserModel.getUserId();
@@ -47,18 +45,20 @@ class CartCard extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
+        // push to productDes page
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (BuildContext context) => ProductDescriptionPage(
-                productId: prodId,
-                categoryId: catId,
-                categoryName: catName,
-                productName: proName,
-                brandName: brandName,
-                productURL: proImage,
-                price: price,
-                is3DModel: is3DModel),
+              productId: prodId,
+              categoryId: catId,
+              categoryName: catName,
+              productName: proName,
+              brandName: brandName,
+              productURL: proImage,
+              price: price,
+              is3DModel: is3DModel,
+            ),
           ),
         );
       },
@@ -84,7 +84,9 @@ class CartCard extends StatelessWidget {
                         proName,
                         overflow: TextOverflow.fade,
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       SizedBox(
                         height: size.height * 0.01,
@@ -98,22 +100,24 @@ class CartCard extends StatelessWidget {
                       ),
                       ElevatedButton.icon(
                         onPressed: () async {
+                          // delete item from cart
                           String message = await cartServices.deleteFromCart(
-                              isPersonalCart: isPersonalCartCard,
-                              id: id,
-                              productId: prodId);
+                            isPersonalCart: isPersonalCartCard,
+                            id: id,
+                            productId: prodId,
+                          );
+                          // display confirmation snackBar
                           final snackBar = SnackBar(
-                              content: Text(
-                            message,
-                            textAlign: TextAlign.center,
-                          ));
+                            content: Text(
+                              message,
+                              textAlign: TextAlign.center,
+                            ),
+                          );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         },
                         label: Text(
                           "Remove from cart",
-                          style: TextStyle(
-                            fontSize: 10.0,
-                          ),
+                          style: TextStyle(fontSize: 10.0),
                         ),
                         icon: Icon(
                           Icons.delete_outline,
@@ -133,25 +137,27 @@ class CartCard extends StatelessWidget {
                       ),
                       ElevatedButton.icon(
                         onPressed: () async {
-                          print(groupId);
                           if (groupId == userId && isPersonalCartCard) {
                             final snackBar = SnackBar(
-                                content: Text(
-                              "There is no active shopping group!",
-                              textAlign: TextAlign.center,
-                            ));
+                              content: Text(
+                                "There is no active shopping group!",
+                                textAlign: TextAlign.center,
+                              ),
+                            );
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(snackBar);
                           } else {
                             String message = await cartServices.addToCart(
-                                id: getOppositeId(),
-                                productId: prodId,
-                                isPersonalCart: !isPersonalCartCard);
+                              id: getOppositeId(),
+                              productId: prodId,
+                              isPersonalCart: !isPersonalCartCard,
+                            );
                             final snackBar = SnackBar(
-                                content: Text(
-                              message,
-                              textAlign: TextAlign.center,
-                            ));
+                              content: Text(
+                                message,
+                                textAlign: TextAlign.center,
+                              ),
+                            );
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(snackBar);
                           }

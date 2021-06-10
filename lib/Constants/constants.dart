@@ -43,7 +43,7 @@ const kAppBar = PreferredSize(
 
 const double kCategoryItemHeight = 120.0;
 
-kCategoryBoxDecoration({categoryURL}) {
+kCategoryBoxDecoration({required String categoryURL}) {
   return BoxDecoration(
     color: Colors.grey.shade400,
     image: DecorationImage(
@@ -60,6 +60,19 @@ const kCategoryNameTextStyle = TextStyle(
   fontSize: 30,
   color: Colors.black,
 );
+
+Widget kCartHeaderWidget({required String cartLabel}) {
+  return Text(
+    cartLabel,
+    style: TextStyle(
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+      color: Colors.blueGrey,
+    ),
+    textAlign: TextAlign.center,
+    overflow: TextOverflow.fade,
+  );
+}
 
 const kTextFieldInputDecoration = InputDecoration(
   filled: true,

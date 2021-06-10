@@ -7,6 +7,7 @@ class EmptyCart extends StatelessWidget {
   final String buttonLabel;
 
   const EmptyCart({required this.isCartPage, required this.buttonLabel});
+
   @override
   Widget build(BuildContext context) {
     return Center(

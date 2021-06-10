@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_amaze_ar/Components/appbar.dart';
 import 'package:flutter_amaze_ar/Components/descrption_widget.dart';
+import 'package:flutter_amaze_ar/Components/productDes_card.dart';
 import 'package:flutter_amaze_ar/Constants/Constants.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:flutter_amaze_ar/services/cart_services.dart';
@@ -18,81 +18,32 @@ class ProductDescriptionPage extends StatelessWidget {
   final userId = UserModel.getUserId();
   final groupId = UserModel.getGroupId();
 
-  ProductDescriptionPage(
-      {Key? key,
-      required this.productId,
-      required this.categoryId,
-      required this.categoryName,
-      required this.productName,
-      required this.brandName,
-      required this.productURL,
-      required this.price,
-      required this.is3DModel})
-      : super(key: key);
+  ProductDescriptionPage({
+    required this.productId,
+    required this.categoryId,
+    required this.categoryName,
+    required this.productName,
+    required this.brandName,
+    required this.productURL,
+    required this.price,
+    required this.is3DModel,
+  });
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kAppBarSize),
-        child: AppBarWithProfileIcon(),
-      ),
+      appBar: kAppBar,
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Image.network(
-                    productURL,
-                    height: size.height * 0.4,
-                    width: size.width * 0.9,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            brandName,
-                            style: TextStyle(
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            price,
-                            style: TextStyle(
-                              fontSize: 25.0,
-                              color: Colors.blue,
-                            ),
-                            textAlign: TextAlign.end,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15.0, vertical: 10.0),
-                    child: Text(
-                      productName,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.grey.shade900,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            ProductDesCard(
+              productURL: productURL,
+              size: size,
+              brandName: brandName,
+              price: price,
+              productName: productName,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -115,15 +66,20 @@ class ProductDescriptionPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ElevatedButton.icon(
+                  // add item to persaonl cart
                   onPressed: () async {
-                    HttpCartServices personalCartServices = HttpCartServices();
-                    String message = await personalCartServices.addToCart(
-                        id: userId, productId: productId, isPersonalCart: true);
+                    HttpCartServices cartServices = HttpCartServices();
+                    String message = await cartServices.addToCart(
+                      id: userId,
+                      productId: productId,
+                      isPersonalCart: true,
+                    );
                     final snackBar = SnackBar(
-                        content: Text(
-                      message,
-                      textAlign: TextAlign.center,
-                    ));
+                      content: Text(
+                        message,
+                        textAlign: TextAlign.center,
+                      ),
+                    );
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   label: Text(
@@ -143,27 +99,31 @@ class ProductDescriptionPage extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton.icon(
+                  // add item to group cart if there is an active group
                   onPressed: () async {
-                    print(groupId);
                     if (userId == groupId) {
+                      // there is no active group
                       final snackBar = SnackBar(
-                          content: Text(
-                        "There is no active shopping group!",
-                        textAlign: TextAlign.center,
-                      ));
+                        content: Text(
+                          "There is no active shopping group!",
+                          textAlign: TextAlign.center,
+                        ),
+                      );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     } else {
-                      HttpCartServices personalCartServices =
-                          HttpCartServices();
-                      String message = await personalCartServices.addToCart(
-                          id: groupId,
-                          productId: productId,
-                          isPersonalCart: false);
+                      // add item to active group
+                      HttpCartServices cartServices = HttpCartServices();
+                      String message = await cartServices.addToCart(
+                        id: groupId,
+                        productId: productId,
+                        isPersonalCart: false,
+                      );
                       final snackBar = SnackBar(
-                          content: Text(
-                        message,
-                        textAlign: TextAlign.center,
-                      ));
+                        content: Text(
+                          message,
+                          textAlign: TextAlign.center,
+                        ),
+                      );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
@@ -194,3 +154,4 @@ class ProductDescriptionPage extends StatelessWidget {
     );
   }
 }
+

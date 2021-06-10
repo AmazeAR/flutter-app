@@ -5,8 +5,7 @@ import 'package:flutter_amaze_ar/services/description_services.dart';
 class DescriptionWidget extends StatefulWidget {
   final String productId;
 
-  const DescriptionWidget({Key? key, required this.productId})
-      : super(key: key);
+  const DescriptionWidget({required this.productId});
 
   @override
   _DescriptionWidgetState createState() => _DescriptionWidgetState();
@@ -30,6 +29,7 @@ class _DescriptionWidgetState extends State<DescriptionWidget> {
       builder: (BuildContext context, AsyncSnapshot<Description> snapshot) {
         if (snapshot.hasData) {
           Description description = snapshot.data!;
+
           return Text(
             description.description,
             style: TextStyle(
@@ -37,6 +37,7 @@ class _DescriptionWidgetState extends State<DescriptionWidget> {
               fontWeight: FontWeight.bold,
               color: Colors.grey.shade600,
             ),
+            overflow: TextOverflow.fade,
           );
         } else if (snapshot.hasError) {
           return Center(
