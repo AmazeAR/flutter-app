@@ -6,11 +6,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:localstorage/localstorage.dart';
 
 class GoogleSignInProvider extends ChangeNotifier {
-  GoogleSignInProvider();
 
   final GoogleSignIn googleSignIn = GoogleSignIn();
-  bool _isSigningIn = false;
   final LocalStorage storage = LocalStorage('amaz_ar');
+
+  bool _isSigningIn = false;
 
   bool getIsSigningIn() {
     return _isSigningIn;
@@ -21,6 +21,9 @@ class GoogleSignInProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  // signIn the user using firebase auth 
+  // and posting user to mongo database
+  // and storing user crdentials in localStorage
   Future login() async {
     toggleIsSigningIn(newValue: true);
 
@@ -48,20 +51,19 @@ class GoogleSignInProvider extends ChangeNotifier {
           emailId: userCredential.user!.email!,
           profileURL: userCredential.user!.photoURL!);
 
-      storage.setItem("user", userModel.toJson());
+      storage.setItem("user", userModel.toJson());  // seting user to localStorage
       
-      // initializing groupId same as user id for no meeting groups
-      storage.setItem("groupId", userModel.userId);
+      storage.setItem("groupId", userModel.userId); // initializing groupId same as user id for no meeting groups
 
-      print(storage.getItem("user"));                               
-
+      // print(storage.getItem("user"));                               
       HttpUserServices httpUserServices = HttpUserServices();
-      httpUserServices.postUser(userModel);
+      httpUserServices.postUser(userModel);         // posting user to mongo db
 
       return userCredential;
     }
   }
 
+  // signOut the user
   void logout() async {
     await googleSignIn.disconnect();
     await storage.clear();

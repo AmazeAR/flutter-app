@@ -23,8 +23,6 @@ class MyApp extends StatelessWidget {
         title: 'AmazAR',
         theme: ThemeData.light().copyWith(
           primaryColor: kPrimaryColor,
-          // scaffoldBackgroundColor: Color(0xFFeeeeee),
-          // secondaryHeaderColor: kSecondaryColor,
         ),
         initialRoute: '/',
         routes: {

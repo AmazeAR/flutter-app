@@ -12,17 +12,20 @@ class UserModel {
       required this.emailId,
       this.profileURL = ''});
 
+  // geting user id from localStorage
   static String getUserId() {
     final storage = LocalStorage("amaz_ar");
     return UserModel.fromJson(storage.getItem("user")).userId;
   }
 
+  // geting group id from localStorage
   static String getGroupId() {
     final storage = LocalStorage("amaz_ar");
     String grpId = storage.getItem("groupId");
     return grpId;
   }
 
+  // geting user from localStorage
   static UserModel getUser() {
     final storage = LocalStorage("amaz_ar");
     return UserModel.fromJson(storage.getItem("user"));
@@ -42,6 +45,7 @@ class UserModel {
     return (UserModel.fromJson(userJson)).userId;
   }
 
+  // convert userModel object to JSON format
   Map<String, dynamic> toJson() {
     return ({
       'userId': userId,
@@ -51,11 +55,13 @@ class UserModel {
     });
   }
 
+  // convert JSON to userModel object
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-        userId: json['userId'] as String,
-        fullName: json['fullName'] as String,
-        emailId: json['emailId'] as String,
-        profileURL: json['profileImage'] as String);
+      userId: json['userId'] as String,
+      fullName: json['fullName'] as String,
+      emailId: json['emailId'] as String,
+      profileURL: json['profileImage'] as String,
+    );
   }
 }

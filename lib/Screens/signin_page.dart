@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/signin_btn.dart';
-import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Constants/constants.dart';
 import 'package:flutter_amaze_ar/Provider/google_sign_in.dart';
 import 'package:provider/provider.dart';
@@ -12,13 +11,7 @@ class SignInPage extends StatelessWidget {
       backgroundColor: Color(0xFF149cb1),
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
-            // color: kSecondaryColor,
-            gradient: LinearGradient(
-                colors: [kSecondaryColor, kThiredColor],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight),
-          ),
+          decoration: kSigninPageBoxDecoration,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -48,6 +41,7 @@ class SignInPage extends StatelessWidget {
                     child: GoogleSigninButton(
                       buttonText: "SignIn with Google",
                       onPress: () async {
+                        // sign in using firebase
                         final GoogleSignInProvider provider =
                             Provider.of<GoogleSignInProvider>(context,
                                 listen: false);
@@ -55,7 +49,7 @@ class SignInPage extends StatelessWidget {
                       },
                     ),
                   ),
-                  decoration: kBoxDecorationOfSigninPage,
+                  decoration: kSigninContainerBoxDecoration,
                 ),
               )
             ],

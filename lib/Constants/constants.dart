@@ -7,7 +7,15 @@ const kServerUrl = "https://amazar-v1.herokuapp.com/";
 
 const double kAppBarSize = 70.0;
 
-const kBoxDecorationOfSigninPage = BoxDecoration(
+const kSigninPageBoxDecoration = BoxDecoration(
+  // color: kSecondaryColor,
+  gradient: LinearGradient(
+      colors: [kSecondaryColor, kThiredColor],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight),
+);
+
+const kSigninContainerBoxDecoration = BoxDecoration(
   borderRadius: BorderRadius.only(
     topLeft: Radius.circular(20.0),
     topRight: Radius.circular(20.0),
