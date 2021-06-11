@@ -15,18 +15,19 @@ class UserProfile extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-              flex: 2,
-              child: Container(
-                height: 150,
-                width: 150,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    fit: BoxFit.fitWidth,
-                    image: NetworkImage(user.profileURL),
-                  ),
+            flex: 2,
+            child: Container(
+              height: 150,
+              width: 150,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.fitWidth,
+                  image: NetworkImage(user.profileURL),
                 ),
-              )),
+              ),
+            ),
+          ),
           Expanded(
             child: Text(
               user.fullName,

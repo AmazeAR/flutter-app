@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/Components/shopping_members.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 import 'package:flutter_amaze_ar/Screens/cart_page.dart';
 import 'package:flutter_amaze_ar/models/shoppingGroup_model.dart';
@@ -66,6 +67,61 @@ class ShoppingGroupItem extends StatelessWidget {
                     color: kPrimaryColor,
                     fontWeight: FontWeight.bold),
                 overflow: TextOverflow.fade,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      final String cartLabel = group.groupName;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => Cart(
+                            id: group.groupId,
+                            isPersonalCartPage: false,
+                            cartLabel: cartLabel,
+                          ),
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.shopping_bag,
+                      size: 25,
+                    ),
+                    label: Text(
+                      "Products",
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      // display the list of members
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return ShoppingMembers(
+                            groupId: group.groupId,
+                          );
+                        },
+                      );
+                    },
+                    icon: Icon(
+                      Icons.group,
+                      size: 25,
+                    ),
+                    label: Text(
+                      "Members",
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

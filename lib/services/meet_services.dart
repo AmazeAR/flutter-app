@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_amaze_ar/services/shoppingMember_services.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter/foundation.dart';
@@ -67,10 +68,16 @@ class MeetServices {
           onConferenceWillJoin: (message) {
             // on conference will join
           },
-          onConferenceJoined: (message) {
+          onConferenceJoined: (message) async{
             // add the groupId for shopping cart to all members of meeting
             storage.setItem("groupId", meetName);
             print(storage.getItem("groupId"));
+
+            // add members to shopping grp
+            HttpShoppingMemberServices shoppingMemberServices =
+                HttpShoppingMemberServices();
+            await shoppingMemberServices.addMemberToShoppingGroup(
+                groupId: meetName, userId: UserModel.getUserId());
           },
           onConferenceTerminated: (message) {
             // todo: pop everything out from stack and push main page which is category page at this stage
