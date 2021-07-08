@@ -32,12 +32,15 @@ class _CategoriesPageState extends State<CategoriesPage> {
             AsyncSnapshot<List<CategoryModel>> snapshot) {
           if (snapshot.hasData) {
             List<CategoryModel> categories = snapshot.data!;
-            return ListView(
-              padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
-              children: categories
-                  .map((CategoryModel category) =>
-                      CategoryItem(category: category))
-                  .toList(),
+            return RefreshIndicator(
+              onRefresh: categoriesServices.getCategories,
+              child: ListView(
+                padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
+                children: categories
+                    .map((CategoryModel category) =>
+                        CategoryItem(category: category))
+                    .toList(),
+              ),
             );
           } else if (snapshot.hasError) {
             return Center(

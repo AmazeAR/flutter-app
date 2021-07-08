@@ -49,6 +49,7 @@ class _ShoppingMembersState extends State<ShoppingMembers> {
               ],
             );
           } else if (snapshot.hasError) {
+            print('${snapshot.error}');
             return Center(
               child: Text('${snapshot.error}'),
             );

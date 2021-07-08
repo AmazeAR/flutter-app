@@ -19,9 +19,9 @@ class HttpShoppingMemberServices {
     if (res.statusCode == 200) {
       var body = json.decode(res.body);
 
-      List<dynamic> memberListJson = body['data'];
+      List<dynamic>? memberListJson = body['data'];
 
-      List<UserModel> memberList = memberListJson
+      List<UserModel> memberList = memberListJson!
           .map((dynamic memberJson) => UserModel.fromJson(memberJson))
           .toList();
 
