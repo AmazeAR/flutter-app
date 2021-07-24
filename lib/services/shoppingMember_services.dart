@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_amaze_ar/Constants/Constants.dart';
 import 'package:flutter_amaze_ar/models/user_model.dart';
 import 'package:flutter_amaze_ar/services/cart_services.dart';
 import 'package:http/http.dart' as http;
@@ -10,7 +11,7 @@ class HttpShoppingMemberServices {
     final String url = '/meetparticipants/$groupId';
 
     final res = await http.get(
-      Uri.https('amazar-v1.herokuapp.com', url),
+      Uri.https(kServerUrl, url),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -39,7 +40,7 @@ class HttpShoppingMemberServices {
     final String url = '/meetparticipants/$groupId/$userId';
 
     final res = await http.post(
-      Uri.https('amazar-v1.herokuapp.com', url),
+      Uri.https(kServerUrl, url),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -62,7 +63,7 @@ class HttpShoppingMemberServices {
     final String url = '/meetparticipants/$groupId/$userId';
 
     final res = await http.delete(
-      Uri.https('amazar-v1.herokuapp.com', url),
+      Uri.https(kServerUrl, url),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

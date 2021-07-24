@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amaze_ar/Components/appbar.dart';
 import 'package:flutter_amaze_ar/Constants/Colors.dart';
 
-const kServerUrl = "https://amazar-v1.herokuapp.com";
+const kServerUrl = "amaze-ar.herokuapp.com";
 
 const double kAppBarSize = 70.0;
 

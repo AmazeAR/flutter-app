@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_amaze_ar/Constants/Constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_amaze_ar/models/category_model.dart';
 
@@ -7,7 +8,7 @@ class HttpCategoriesServices {
   // fetching all categories from server
   Future<List<CategoryModel>> getCategories() async {
     http.Response res = await http.get(
-      Uri.https('amazar-v1.herokuapp.com', 'categories'),
+      Uri.https(kServerUrl , '/categories'),
     );
 
     if (res.statusCode == 200) {

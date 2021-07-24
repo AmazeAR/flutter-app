@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_amaze_ar/Constants/Constants.dart';
 import 'package:flutter_amaze_ar/models/shoppingGroup_model.dart';
 import 'package:flutter_amaze_ar/models/product_model.dart';
 import 'package:http/http.dart' as http;
@@ -9,7 +10,7 @@ class HttpCartServices {
     final String url = '/cart/$id';
     String cartName = (isPersonalCart) ? 'personal cart' : 'group cart';
 
-    final res = await http.get(Uri.https('amazar-v1.herokuapp.com', url));
+    final res = await http.get(Uri.https(kServerUrl, url));
 
     if (res.statusCode == 200) {
       print("$cartName is successfuly fetched!");
@@ -40,7 +41,7 @@ class HttpCartServices {
     String cartName = (isPersonalCart) ? 'personal cart' : 'group cart';
 
     http.Response res = await http.post(
-      Uri.https('amazar-v1.herokuapp.com', url),
+      Uri.https(kServerUrl, url),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -65,7 +66,7 @@ class HttpCartServices {
     String cartName = (isPersonalCart) ? 'personal cart' : 'group cart';
 
     http.Response res =
-        await http.delete(Uri.https('amazar-v1.herokuapp.com', url));
+        await http.delete(Uri.https(kServerUrl, url));
 
     if (res.statusCode == 200) {
       print("item get deleted from $cartName ");
@@ -84,7 +85,7 @@ class HttpCartServices {
     final String url = '/users/groupCart/$userId/$groupName/$groupId';
 
     http.Response res = await http.post(
-      Uri.https('amazar-v1.herokuapp.com', url),
+      Uri.https(kServerUrl, url),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -105,7 +106,7 @@ class HttpCartServices {
     final String url = '/users/groupCarts/$userId';
 
     http.Response res =
-        await http.get(Uri.https('amazar-v1.herokuapp.com', url));
+        await http.get(Uri.https(kServerUrl, url));
 
     if (res.statusCode == 200) {
       print("shopping groups list fetched");
@@ -132,7 +133,7 @@ class HttpCartServices {
     final String url = '/users/groupCart/$userId/$groupId';
 
     http.Response res =
-        await http.delete(Uri.https('amazar-v1.herokuapp.com', url));
+        await http.delete(Uri.https(kServerUrl, url));
 
     if (res.statusCode == 200) {
       print("shopping group removed");

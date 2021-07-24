@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_amaze_ar/Constants/Constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_amaze_ar/models/product_model.dart';
 
@@ -6,7 +7,7 @@ class HttpProductsServices {
   // get products of a specific category without desciption from db
   Future<List<ProductModel>> getProducts({required String categoryName}) async {
     http.Response res = await http.get(
-      Uri.https('amazar-v1.herokuapp.com', 'products/$categoryName'),
+      Uri.https(kServerUrl, 'products/$categoryName'),
     );
 
     if (res.statusCode == 200) {
